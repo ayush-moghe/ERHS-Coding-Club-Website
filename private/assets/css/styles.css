@@ -1,0 +1,40 @@
+.webpage {
+    background-color: black;
+}
+
+.erhs-h1 {
+    color: darkorange;
+    text-shadow: 2px 2px 2px black;
+}
+
+.erhs-h2 {
+    color: orangered;
+    text-shadow: 2px 2px 2px black;
+}
+
+.erhs-p {
+    color: white;
+    margin: auto;
+    text-shadow: 2px 2px 2px black;
+}
+
+.erhs-section {
+    border-width: thick;
+    border-style: solid;
+    border-right-color: white;
+    border-left-color: white;
+    margin: auto;
+}
+
+.erhs-section-selected {
+    border-width: thick;
+    border-style: solid;
+    border-right-color: orangered;
+    border-left-color: orangered;
+    margin: auto;
+}
+
+
+
+
+
