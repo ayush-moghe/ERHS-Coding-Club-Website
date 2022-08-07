@@ -14,7 +14,7 @@
 
 <div class="container-fluid text-center">
 
-    <img class="img-fluid" src="../private/assets/img/ERHSCC.png" alt="ERHS Coding Club Logo">
+    <img class="img-fluid" src="private/assets/img/ERHSCC.png" alt="ERHS Coding Club Logo">
     <div class="h1 erhs-h1 mt-5" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">&lt Welcome to the ERHS Coding Club &gt</div>
     <ul class="pagination pagination-lg justify-content-center mt-5">
         <li class="page-item"><a class="page-link" href="?tab=0#tab1">1</a></li>

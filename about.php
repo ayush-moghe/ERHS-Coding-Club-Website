@@ -7,7 +7,7 @@ $page_name = "About";
 <?php require_once '../private/temp/navbar.php'; ?>
 
 <div class="container-fluid text-center">
-    <img class="img-fluid text-center" src="../private/assets/img/ERHSCC.png" alt="ERHS Coding Club Logo">
+    <img class="img-fluid text-center" src="private/assets/img/ERHSCC.png" alt="ERHS Coding Club Logo">
     <div class="h1 erhs-h1 mt-5 fs-1 mb-5" style="font-family: 'Manrope', sans-serif; text-shadow: 2px 2px 2px white;">About Us</div>
 
     <div class="table-responsive-md mb-5 mt-5">
@@ -104,7 +104,7 @@ $page_name = "About";
            </div>
            <div class="row gy-md-0">
                <div class="col-md-6 " style="padding-right: 0px !important; padding-left: 0px !important;">
-                   <div style=""><img class="rounded text-start img-fluid w-100 fit-cover" style="height: 416px;" src="../private/assets/img/founder.png" /></div>
+                   <div style=""><img class="rounded text-start img-fluid w-100 fit-cover" style="height: 416px;" src="private/assets/img/founder.png" /></div>
                </div>
                <div class="col-md-6 grid" style="padding-right: 0px !important; padding-left: 0px !important;">
                     <div class="erhs-p text-dark text-center ps-5 pe-5 text-wrap text-justfiy" style="padding-bottom: 100px; padding-top: 100px; background-color: lightblue; text-shadow: none; font-family: 'Courier Prime', monospace;">The ERHS Coding Club was founded by Ayush Moghe
