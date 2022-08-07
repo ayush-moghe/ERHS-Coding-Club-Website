@@ -1,10 +1,12 @@
+
 .webpage {
     background-color: black;
 }
 
 .erhs-h1 {
     color: darkorange;
-    text-shadow: 2px 2px 2px black;
+    text-shadow: 2px 2px 2px white;
+
 }
 
 .erhs-h2 {
@@ -16,6 +18,7 @@
     color: white;
     margin: auto;
     text-shadow: 2px 2px 2px black;
+
 }
 
 .erhs-section {
@@ -33,6 +36,9 @@
     border-left-color: orangered;
     margin: auto;
 }
+
+
+
 
 
 
