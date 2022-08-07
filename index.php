@@ -8,9 +8,9 @@
 
 ?>
 
-<?php require_once "../private/init.php"; ?>
-<?php require_once '../private/temp/header.php'; ?>
-<?php require_once '../private/temp/navbar.php'; ?>
+<?php require_once "./private/init.php"; ?>
+<?php require_once './private/temp/header.php'; ?>
+<?php require_once './private/temp/navbar.php'; ?>
 
 <div class="container-fluid text-center">
 
@@ -56,4 +56,4 @@
 
 
 
-<?php require_once '../private/temp/footer.php'; ?>
+<?php require_once './private/temp/footer.php'; ?>

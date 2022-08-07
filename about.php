@@ -2,9 +2,9 @@
 $page_style = "webpage";
 $page_name = "About";
 ?>
-<?php require_once '../private/init.php'; ?>
-<?php require_once '../private/temp/header.php'; ?>
-<?php require_once '../private/temp/navbar.php'; ?>
+<?php require_once './private/init.php'; ?>
+<?php require_once './private/temp/header.php'; ?>
+<?php require_once './private/temp/navbar.php'; ?>
 
 <div class="container-fluid text-center">
     <img class="img-fluid text-center" src="private/assets/img/ERHSCC.png" alt="ERHS Coding Club Logo">
@@ -120,4 +120,4 @@ $page_name = "About";
 
 </div>
 
-<?php require_once '../private/temp/footer.php'; ?>
+<?php require_once './private/temp/footer.php'; ?>
