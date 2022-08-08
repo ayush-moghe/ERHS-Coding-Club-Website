@@ -1,4 +1,5 @@
 <?php
+header('location: https://erhscodingclub.org/index.php');
 define("PRIVATE_PATH", dirname(__FILE__));
 define("PROJECT_PATH", dirname(PRIVATE_PATH));
 define("PUBLIC_PATH", PROJECT_PATH . '/public');
@@ -13,4 +14,3 @@ define("WWW_ROOT", $doc_root);
 
 require_once('util.php');
 require_once('route.php');
-redirect_to(url_for('/public/index.php'));
