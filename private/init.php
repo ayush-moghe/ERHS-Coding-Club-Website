@@ -1,7 +1,13 @@
 <?php
+if (isset($blacklist)) {
+    $blacklist = true;
+} else {
+    $blacklist = false;
+}
 
-$page = __FILE__;
-echo $page;
+if ($blacklist == true) {
+    header("Location: https://erhscodingclub.org/index.php");
+}
 
 define("PRIVATE_PATH", dirname(__FILE__));
 define("PROJECT_PATH", dirname(PRIVATE_PATH));
