@@ -1,4 +1,8 @@
 <?php
+
+$page = __FILE__;
+
+
 define("PRIVATE_PATH", dirname(__FILE__));
 define("PROJECT_PATH", dirname(PRIVATE_PATH));
 define("PUBLIC_PATH", PROJECT_PATH . '/public');
@@ -13,3 +17,7 @@ define("WWW_ROOT", $doc_root);
 
 require_once('util.php');
 require_once('route.php');
+
+if (strpos($page, 'private') ) {
+    redirect_to(url_for('/public/index.php'));
+}
