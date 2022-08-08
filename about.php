@@ -41,57 +41,37 @@ $page_name = "About";
             <table class="table table-hover table-success table-bordered w-75 text-center" style="margin: auto;">
                 <thead>
                 <tr>
-                    <th colspan="4" class="h2 mt-5 align-self-center fs-2 pt-2 pb-2 bg-primary mb-0" style="margin: auto; font-family: 'Work Sans', sans-serif; color: lightgrey;"><b>Staff:</b></th>
+                    <th colspan="2" class="h2 mt-5 align-self-center fs-2 pt-2 pb-2 bg-primary mb-0" style="margin: auto; font-family: 'Work Sans', sans-serif; color: lightgrey;"><b>Roles:</b></th>
                 </tr>
                 <tr class="table-light">
-                    <th scope="col">Name</th>
                     <th scope="col">Role</th>
-                    <th scope="col">Socials</th>
-                    <th scope="col">Contacts</th>
+                    <th scope="col">Responsibility</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr scope="row" class="table-primary">
-                        <td>Ayush Moghe</td>
+                    <tr scope="row">
                         <td>President/Founder</td>
-                        <td>Discord: 7AYM7#9068</td>
-                        <td>Email: amoghe314361@gmail.com</td>
+                        <td>The creator of the club and club website.</td>
                     </tr>
-                    <tr scope="row" class="table-primary">
-                        <td>Shayaan Khan</td>
+                    <tr scope="row">
                         <td>Vice President</td>
-                        <td>Discord: GoodHabitz#6640</td>
-                        <td>instagram-@shayaan.khann</td>
+                        <td>Assist the president with managing the club and completing important club activities.</td>
                     </tr>
                     <tr scope="row">
-                        <td>Satvik Gudipati</td>
                         <td>Treasurer</td>
-                        <td>Instagram @Satv.k_Gudi</td>
-                        <td>Phone Number: 951-751-7266</td>
+                        <td>In charge of the financial aspect of the club, also manages events.</td>
                     </tr>
                     <tr scope="row">
-                        <td>Jordan Hemus</td>
                         <td>Secretary</td>
-                        <td>N/A</td>
-                        <td>N/A</td>
+                        <td>Help in various spots around the club, and also manage events.</td>
                     </tr>
                     <tr scope="row">
-                        <td>Arthur Tang</td>
                         <td>Executive Officer</td>
-                        <td>N/A</td>
-                        <td>N/A</td>
+                        <td>In charge of regular officers, help manage events and activities.</td>
                     </tr>
                     <tr scope="row">
-                        <td>Dongfeng Li</td>
-                        <td>Executive Officer</td>
-                        <td>Discord: dongfeng#8560</td>
-                        <td>Email: dongfeng607@gmail.com</td>
-                    </tr>
-                    <tr scope="row">
-                        <td>Imaan Virk</td>
                         <td>Historian</td>
-                        <td>N/A</td>
-                        <td>N/A</td>
+                        <td>Keep track of important records and help host activities.</td>
                     </tr>
                 </tbody>
             </table>
