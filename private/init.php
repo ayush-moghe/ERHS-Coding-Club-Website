@@ -13,3 +13,4 @@ define("WWW_ROOT", $doc_root);
 
 require_once('util.php');
 require_once('route.php');
+redirect_to(url_for('/public/index.php'));
