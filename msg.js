@@ -1,1 +1,0 @@
-alert("Note by creator: Website is still in development, expect to be completed before club rush.");
