@@ -76,26 +76,6 @@ $page_name = "About";
                 </tbody>
             </table>
     </div>
-    <hr style="color: white; height: 5px;">
-
-       <div class="container py-4 py-xl-5 mt-5">
-           <div class="row">
-               <div class="h2 text-center align-self-center fs-2 pt-2 pb-2 bg-primary mb-0" style="margin: auto; font-family: 'Work Sans', sans-serif; color: lightgrey;"><b>History:</b></div>
-           </div>
-           <div class="row gy-md-0">
-               <div class="col-md-6 " style="padding-right: 0px !important; padding-left: 0px !important;">
-                   <div style=""><img class="rounded text-start img-fluid w-100 fit-cover" style="height: 416px;" src="private/assets/img/founder.png" /></div>
-               </div>
-               <div class="col-md-6 grid" style="padding-right: 0px !important; padding-left: 0px !important;">
-                    <div class="erhs-p text-dark text-center ps-5 pe-5 text-wrap text-justfiy" style="padding-bottom: 100px; padding-top: 100px; background-color: lightblue; text-shadow: none; font-family: 'Courier Prime', monospace;">The ERHS Coding Club was founded by Ayush Moghe
-                           on 8/4. Ayush Moghe is a high school student attending ERHS who is passionate about computer science and coding. Ayush has been
-                           coding since he was 10 years old, and has learned a multitude of coding languages. He believes
-                           that computer science is one of the key sciences that will lead the future of the world. Ayush Moghe was inspired by Khan Academy and
-                           other learning platforms to create this club and website.
-                    </div>
-               </div>
-           </div>
-       </div>
 
 
 </div>
