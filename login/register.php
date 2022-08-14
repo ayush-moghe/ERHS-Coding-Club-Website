@@ -29,7 +29,7 @@ $inline = "background-image: url('../private/assets/img/ERHSCC.png'); background
                 </li>
             </ul>
             <hr style="opacity: 1; color: red; height: 5px;">
-            <p class="fs-5 text-center" style="background-color: rgba(202, 202, 187, 0.47); color: black; border-radius: 15px; border: 2px solid white;"><b>Note: Staff and Teacher Accounts are created my Club Admins such as the Founder and Advisor</b></p>
+            <p class="fs-5 text-center" style="background-color: rgba(202, 202, 187, 0.47); color: black; border-radius: 15px; border: 2px solid white;"><b>Note: Staff and Teacher Accounts are created by Club Admins such as the Founder and Advisor</b></p>
             <div class="h2 erhs-h2 text-center mb-3 mt-3" style="font-family: 'Orbitron', sans-serif;">Student Register</div>
 
             <div>
