@@ -22,4 +22,4 @@
 </head>
 
 
-<body class="<?php echo $page_style;?>">
+<body class="<?php echo $page_style;?>" style="<?php echo $inline; ?>">

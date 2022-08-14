@@ -1,13 +1,14 @@
 <?php
 $page_style = "webpage";
 $page_name = "Student Login";
+$inline = "background-image: url('../private/assets/img/ERHSCC.png'); background-repeat: no-repeat; background-position: center; background-size: cover;";
 ?>
 
 <?php require_once "../private/init.php"; ?>
 <?php require_once "../private/temp/headerNest.php"; ?>
 <?php require_once "../private/temp/navbarNest.php"; ?>
 
-<div class="container-fluid text-centet">
+<div class="container-fluid text-center banner">
     <form method="post" action="login.php" class="w-75 ps-5 pe-5" style="margin: auto; background-color: rgba(91, 232, 105, 0.63); border-radius: 15px;">
 
         <div class="h1 fs-sm-5 erhs-h1 text-center mb-4 mt-3" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">Login/ Register</div>
