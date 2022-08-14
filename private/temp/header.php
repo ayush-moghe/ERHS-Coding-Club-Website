@@ -9,6 +9,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title><?php echo $page_name; ?></title>
+    <link rel="shortcut icon" href="./private/assets/img/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./private/assets/img/favicon.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="./private/assets/css/Navbar-Right-Links-Dark-icons.css">
