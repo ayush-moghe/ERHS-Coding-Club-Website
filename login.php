@@ -23,7 +23,7 @@ $page_name = 'Login';
             <label class="form-label mt-2" for="username">Username</label>
             <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-person-circle"></i></span>
-                <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Enter username">
+                <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Enter username" style="color: white; background-color: orange;">
             </div>
 
         </div>
@@ -32,7 +32,7 @@ $page_name = 'Login';
             <label class="form-label mt-2" for="password">Password</label>
             <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-asterisk"></i></span>
-                <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter password">
+                <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter password" style="color: white; background-color: orange;">
             </div>
 
         </div>

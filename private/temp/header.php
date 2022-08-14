@@ -19,20 +19,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@700&family=Work+Sans:wght@500&display=swap" rel="stylesheet">
-    <style>
-        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: white;
-            opacity: 1; /* Firefox */
-        }
-
-        :-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color: white;
-        }
-
-        ::-ms-input-placeholder { /* Microsoft Edge */
-            color: white;
-        }
-    </style>
 </head>
 
 
