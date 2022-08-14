@@ -2,13 +2,12 @@
 $page_style = "webpage";
 $page_name = "Student Login";
 $inline = "background-image: url('../private/assets/img/ERHSCC.png'); background-repeat: no-repeat; background-position: center; background-size: cover;";
-
 ?>
 
 <?php require_once "../private/init.php"; ?>
 <?php require_once "../private/temp/headerNest.php"; ?>
 <?php require_once "../private/temp/navbarNest.php"; ?>
-
+<?php $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem'); ?>
     <div class="container-fluid">
         <form method="post" action="" class="w-75 ps-5 pe-5" style="margin: auto; background-color: rgba(91, 232, 105, 0.63); border-radius: 15px;">
 
