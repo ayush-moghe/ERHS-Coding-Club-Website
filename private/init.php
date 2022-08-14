@@ -1,20 +1,11 @@
 <?php
-if (isset($blacklist)) {
-    $blacklist = true;
-} else {
-    $blacklist = false;
-}
 
-if ($blacklist == true) {
-    header("Location: https://erhscodingclub.org/index.php");
-}
 
 define("PRIVATE_PATH", dirname(__FILE__));
 define("PROJECT_PATH", dirname(PRIVATE_PATH));
 define("PUBLIC_PATH", PROJECT_PATH . '/public');
 define("ASSET_PATH", PRIVATE_PATH . '/assets');
 define("TEMP_PATH", PRIVATE_PATH . '/temp');
-
 // Assign the root URL to a PHP constant
 // * Can dynamically find everything in URL up to "/public"
 $public_end = strpos($_SERVER['SCRIPT_NAME'], '/public') + 7;
@@ -23,4 +14,5 @@ define("WWW_ROOT", $doc_root);
 
 require_once('util.php');
 require_once('route.php');
+
 

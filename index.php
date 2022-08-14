@@ -5,7 +5,6 @@ $section_classes = ["erhs-section", "erhs-section", "erhs-section", "erhs-sectio
 $tab = $_GET['tab'] ?? 0;
 $section_classes[$tab] = "erhs-section-selected";
 
-
 ?>
 
 <?php require_once "./private/init.php"; ?>
