@@ -12,7 +12,7 @@
                         <a class="dropdown-item" href="#">Settings</a>
                     </div>
                 </li>
-            </ul><a class="btn btn-primary ms-md-2" role="button" href="#">Login/Register</a>
+            </ul><a class="btn btn-primary ms-md-2" role="button" href="login.php">Login/Register</a>
         </div>
     </div>
 </nav>
