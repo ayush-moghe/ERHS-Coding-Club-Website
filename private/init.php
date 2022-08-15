@@ -12,6 +12,5 @@ require_once('database.php');
 require_once('validate.php');
 require_once('query.php');
 
-echo url_for('index.php');
 
 
