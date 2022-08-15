@@ -14,7 +14,7 @@ if( is_post_request() ) {
     if ($errors === true) {
         redirect_to('../index.php');
     }
-
+    db_disconnect($ercc_db);
 }
 
 ?>
