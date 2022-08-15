@@ -1,10 +1,6 @@
 <?php
 
-function url_for($script_path) {
-    // add the leading '/' if not present
 
-    return WWW_ROOT . $script_path;
-}
 
 function u($string="") {
     return urlencode($string);

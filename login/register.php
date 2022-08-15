@@ -12,7 +12,7 @@ if( is_post_request() ) {
     $errors = register_user( $_POST, $ercc_db);
 
     if ($errors === true) {
-        redirect_to(url_for('index.php'));
+        redirect_to('../index.php');
     }
 
 }
@@ -24,7 +24,7 @@ if( is_post_request() ) {
 
     <div class="container-fluid">
 
-        <form  class="w-75 ps-5 pe-5" style="margin: auto; background-color: rgba(91, 232, 105, 0.63); border-radius: 15px;">
+        <form method="post" action="register.php" class="w-75 ps-5 pe-5" style="margin: auto; background-color: rgba(91, 232, 105, 0.63); border-radius: 15px;">
 
             <div class="h1 fs-sm-5 erhs-h1 text-center mb-4 mt-3" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">Login/ Register</div>
 
