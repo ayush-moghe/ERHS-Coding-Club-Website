@@ -2,13 +2,29 @@
 $page_style = "webpage";
 $page_name = "Student Login";
 $inline = "background-image: url('../private/assets/img/ERHSCC.png'); background-repeat: no-repeat; background-position: center; background-size: cover;";
+require_once "../private/init.php";
+
+$ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
+$errors = ['sid' => '', 'username' => '', 'password' => '', 'cpwd' => '', 'present' => false];
+
+if( is_post_request() ) {
+
+    $errors = register_user( $_POST, $ercc_db);
+
+    if ($errors === true) {
+        redirect_to(url_for('index.php'));
+    }
+
+}
+
 ?>
 
-<?php require_once "../private/init.php"; ?>
 <?php require_once "../private/temp/headerNest.php"; ?>
 <?php require_once "../private/temp/navbarNest.php"; ?>
+
     <div class="container-fluid">
-        <form method="post" action="" class="w-75 ps-5 pe-5" style="margin: auto; background-color: rgba(91, 232, 105, 0.63); border-radius: 15px;">
+
+        <form method="post" action="register.php" class="w-75 ps-5 pe-5" style="margin: auto; background-color: rgba(91, 232, 105, 0.63); border-radius: 15px;">
 
             <div class="h1 fs-sm-5 erhs-h1 text-center mb-4 mt-3" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">Login/ Register</div>
 
@@ -31,11 +47,13 @@ $inline = "background-image: url('../private/assets/img/ERHSCC.png'); background
             <div class="h2 erhs-h2 text-center mb-3 mt-3" style="font-family: 'Orbitron', sans-serif;">Student Register</div>
 
             <div>
-                <label class="form-label mt-2 text-light" for="username">Student ID</label>
+                <label class="form-label mt-2 text-light" for="sid">Student ID</label>
                 <div class="input-group input-group-lg">
                     <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-credit-card-2-front"></i></span>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter id" style="color: white; background-color: orange;">
+                    <input type="text" class="form-control" id="sid" name="sid" placeholder="Enter id" style="color: white; background-color: orange;">
                 </div>
+                <div class="p text-danger fs-5 bg-dark mt-1" role="alert"><?php echo $errors['sid'] ?></div>
+
             </div>
 
             <div>
@@ -44,6 +62,7 @@ $inline = "background-image: url('../private/assets/img/ERHSCC.png'); background
                     <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-person-circle"></i></span>
                     <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Enter username" style="color: white; background-color: orange;">
                 </div>
+                <div class="p text-danger fs-5 bg-dark mt-1" role="alert"><?php echo $errors['username'] ?></div>
 
             </div>
 
@@ -53,15 +72,17 @@ $inline = "background-image: url('../private/assets/img/ERHSCC.png'); background
                     <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-asterisk"></i></span>
                     <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter password" style="color: white; background-color: orange;">
                 </div>
+                <div class="p text-danger fs-5 bg-dark mt-1" role="alert"><?php echo $errors['password'] ?></div>
 
             </div>
 
             <div>
-                <label class="form-label mt-2 text-light" for="password">Confirm Password</label>
+                <label class="form-label mt-2 text-light" for="cpwd">Confirm Password</label>
                 <div class="input-group input-group-lg">
                     <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-asterisk"></i></span>
-                    <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter password" style="color: white; background-color: orange;">
+                    <input type="password" class="form-control form-control-lg" id="cpwd" name="cpwd" placeholder="Enter password" style="color: white; background-color: orange;">
                 </div>
+                <div class="p text-danger fs-5 bg-dark mt-1" role="alert"><?php echo $errors['cpwd'] ?></div>
 
             </div>
 

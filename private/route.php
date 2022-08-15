@@ -2,9 +2,7 @@
 
 function url_for($script_path) {
     // add the leading '/' if not present
-    if($script_path[0] != '/') {
-        $script_path = "/" . $script_path;
-    }
+
     return WWW_ROOT . $script_path;
 }
 
@@ -32,7 +30,7 @@ function error_500() {
 
 function redirect_to($location) {
     header("Location: " . $location);
-    exit;
+    die();
 }
 
 function is_post_request() {
