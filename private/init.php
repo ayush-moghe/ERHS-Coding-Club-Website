@@ -4,7 +4,7 @@
 // Assign the root URL to a PHP constant
 $private_end = strpos($_SERVER['SCRIPT_NAME'], '/private') + 6;
 $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, $private_end);
-define("WWW_ROOT", 'erhscodingclub.org/');
+define("WWW_ROOT", '/');
 echo WWW_ROOT;
 require_once('util.php');
 require_once('route.php');
