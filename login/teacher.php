@@ -1,9 +1,10 @@
 <?php
 $page_style = "webpage";
 $page_name = "Student Login";
+require_once "../private/init.php";
 ?>
 
-<?php require_once "../private/init.php"; ?>
+
 <?php require_once "../private/temp/headerNest.php"; ?>
 <?php require_once "../private/temp/navbarNest.php"; ?>
 
