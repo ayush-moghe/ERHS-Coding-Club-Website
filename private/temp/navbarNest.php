@@ -1,4 +1,4 @@
-<?php if( !isset($_SESSION['sid']) ) {?>
+<?php if( !(isset($_SESSION['sid'])) ) {?>
     <nav class="navbar navbar-flex navbar-dark navbar-expand-md bg-dark py-3 sticky-top" style="">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><img src="../private/assets/img/ERHSCC.png" width="104" height="87"></span><span><strong class="erhs-h1">&nbsp; ERHS Coding Club</strong></span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-5">
@@ -13,7 +13,7 @@
 
 
 
-<?php if( isset($_SESSION['sid']) ) {?>
+<?php if ( issest($_SESSION['sid']) ) {?>
     <nav class="navbar navbar-flex navbar-dark navbar-expand-md bg-dark py-3 sticky-top" style="">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><img src="../private/assets/img/ERHSCC.png" width="104" height="87"></span><span><strong class="erhs-h1">&nbsp; ERHS Coding Club</strong></span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-5">
