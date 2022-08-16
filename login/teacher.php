@@ -1,7 +1,6 @@
 <?php
 $page_style = "webpage";
 $page_name = "Student Login";
-$inline = "background-image: url('../private/assets/img/ERHSCC.png'); background-repeat: no-repeat; background-position: center; background-size: cover;";
 ?>
 
 <?php require_once "../private/init.php"; ?>
@@ -27,7 +26,6 @@ $inline = "background-image: url('../private/assets/img/ERHSCC.png'); background
                 </ul>
             </li>
         </ul>
-        <hr style="opacity: 1; color: red; height: 5px;">
 
         <div class="h2 erhs-h2 text-center mb-3 mt-3" style="font-family: 'Orbitron', sans-serif;">Teacher Login</div>
 
@@ -35,7 +33,7 @@ $inline = "background-image: url('../private/assets/img/ERHSCC.png'); background
             <label class="form-label mt-2 text-light" for="username">Username</label>
             <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-person-circle"></i></span>
-                <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Enter username" style="color: white; background-color: orange;">
+                <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Enter username">
             </div>
 
         </div>
@@ -44,12 +42,12 @@ $inline = "background-image: url('../private/assets/img/ERHSCC.png'); background
             <label class="form-label mt-2 text-light" for="password">Password</label>
             <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-asterisk"></i></span>
-                <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter password" style="color: white; background-color: orange;">
+                <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter password">
             </div>
 
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3 mb-3">Login</button>
+        <button type="submit" class="btn btn-lg btn-primary mt-3 mb-3">Login</button>
     </form>
 
 </div>

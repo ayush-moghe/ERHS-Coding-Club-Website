@@ -23,3 +23,27 @@ function register_user($user_data, $db) {
     }
 
 }
+
+function member_login($user_data, $db) {
+
+    $sid = $user_data['sid'] ?? '';
+    $username = $user_data['username'] ?? '';
+    $password = $user_data['password'] ?? '';
+
+    $sql = "SELECT * FROM users WHERE sid='";
+    $sql.= db_escape($db, $sid) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $fetched_data = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    $fetched_username = $fetched_data['username'] ?? '';
+    $fetched_password = $fetched_data['password'] ?? '';
+
+    if( $fetched_username === $username && password_verify($password, $fetched_password)) {
+        login_user($fetched_data);
+        return true;
+    } else {
+        return false;
+    }
+
+}

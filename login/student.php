@@ -1,15 +1,28 @@
 <?php
 $page_style = "webpage";
 $page_name = "Student Login";
-$inline = "background-image: url('../private/assets/img/ERHSCC.png'); background-repeat: no-repeat; background-position: center; background-size: cover;";
+require_once "../private/init.php";
+
+$error = false;
+$ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
+
+if (is_post_request()) {
+    $try_login = member_login($_POST, $ercc_db);
+    if ($try_login === true) {
+        redirect_to('../index.php');
+    } else {
+        $error = true;
+    }
+}
+
 ?>
 
-<?php require_once "../private/init.php"; ?>
+
 <?php require_once "../private/temp/headerNest.php"; ?>
 <?php require_once "../private/temp/navbarNest.php"; ?>
 
 <div class="container-fluid">
-    <form method="post" action="" class="w-75 ps-5 pe-5" style="margin: auto; background-color: rgba(91, 232, 105, 0.63); border-radius: 15px;">
+    <form method="post" action="student.php" class="w-75 ps-5 pe-5" style="margin: auto; background-color: rgba(91, 232, 105, 0.63); border-radius: 15px;">
 
         <div class="h1 fs-sm-5 erhs-h1 text-center mb-4 mt-3" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">Login/ Register</div>
 
@@ -27,15 +40,14 @@ $inline = "background-image: url('../private/assets/img/ERHSCC.png'); background
                 </ul>
             </li>
         </ul>
-        <hr style="opacity: 1; color: red; height: 5px;">
 
         <div class="h2 erhs-h2 text-center mb-3 mt-3" style="font-family: 'Orbitron', sans-serif;">Student Login</div>
 
         <div>
-            <label class="form-label mt-2 text-light" for="username">Student ID</label>
+            <label class="form-label mt-2 text-light" for="sid">Student ID</label>
             <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-credit-card-2-front"></i></span>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Enter id" style="color: white; background-color: orange;">
+                <input type="text" class="form-control" id="sid" name="sid" placeholder="Enter id">
             </div>
         </div>
 
@@ -43,7 +55,7 @@ $inline = "background-image: url('../private/assets/img/ERHSCC.png'); background
             <label class="form-label mt-2 text-light" for="username">Username</label>
             <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-person-circle"></i></span>
-                <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Enter username" style="color: white; background-color: orange;">
+                <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Enter username">
             </div>
 
         </div>
@@ -52,12 +64,18 @@ $inline = "background-image: url('../private/assets/img/ERHSCC.png'); background
             <label class="form-label mt-2 text-light" for="password">Password</label>
             <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-asterisk"></i></span>
-                <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter password" style="color: white; background-color: orange;">
+                <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter password">
             </div>
 
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3 mb-3">Login</button>
+        <?php if($error) { ?>
+            <div class="alert alert-danger" role="alert">
+                <strong>Error!</strong> Invalid username or password.
+            </div>
+        <?php } ?>
+
+        <button type="submit" class="btn btn-lg btn-primary mt-3 mb-3">Login</button>
     </form>
 
 </div>
