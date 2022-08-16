@@ -11,13 +11,13 @@ variables:
   azureSubscription: 'f055600a-6bf8-4cb6-8ffa-a3dba898ede0'
 
   # Web app name
-  webAppName: 'ercc-dev'
+  webAppName: 'ercc-test'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
   # Environment name
-  environmentName: 'ercc-dev'
+  environmentName: 'ercc-test'
 
   # Root folder under which your composer.json file is available.
   rootFolder: $(System.DefaultWorkingDirectory)
