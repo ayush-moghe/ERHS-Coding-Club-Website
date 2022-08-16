@@ -1,8 +1,8 @@
 <?php
 $page_style = "webpage";
 $page_name = "About";
+require_once './private/init.php';
 ?>
-<?php require_once './private/init.php'; ?>
 <?php require_once './private/temp/header.php'; ?>
 <?php require_once './private/temp/navbar.php'; ?>
 

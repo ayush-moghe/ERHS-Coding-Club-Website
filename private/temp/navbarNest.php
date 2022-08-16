@@ -23,6 +23,8 @@
                     <li class="nav-item"><a class="nav-link" href="../about.php">About us</a></li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Account</a>
                         <div class="dropdown-menu">
+                            <div class="dropdown-header"><?php echo $_SESSION['username']; ?></div>
+                            <div class="dropdown-header">SID: <?php echo $_SESSION['sid']; ?></div>
                             <a class="dropdown-item" href="#">Profile</a>
                             <a class="dropdown-item" href="#">Activity</a>
                             <a class="dropdown-item" href="#">Settings</a>

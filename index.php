@@ -4,10 +4,10 @@ $page_name = "Home";
 $section_classes = ["erhs-section", "erhs-section", "erhs-section", "erhs-section"];
 $tab = $_GET['tab'] ?? 0;
 $section_classes[$tab] = "erhs-section-selected";
-
+require_once "./private/init.php";
 ?>
 
-<?php require_once "./private/init.php"; ?>
+
 <?php require_once './private/temp/header.php'; ?>
 <?php require_once './private/temp/navbar.php'; ?>
 
