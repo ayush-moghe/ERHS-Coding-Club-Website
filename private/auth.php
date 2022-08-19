@@ -13,8 +13,8 @@ function logout_user() {
     session_destroy();
 }
 
-function require_login() {
+function require_login($redirect_url) {
     if( !isset($_SESSION['sid']) ) {
-        redirect_to('./login/student.php');
+        redirect_to($redirect_url);
     }
 }

@@ -3,6 +3,10 @@
     background-color: black;
 }
 
+.dashboard {
+    background-color: dimgrey;
+}
+
 .erhs-h1 {
     color: darkorange;
 
@@ -36,6 +40,7 @@
     border-left-color: orangered;
     margin: auto;
 }
+
 
 
 

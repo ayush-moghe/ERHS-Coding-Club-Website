@@ -11,7 +11,7 @@ function register_user($user_data, $db) {
         $hashed_password = password_hash($user_data['password'], PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO users (sid, username, password, verified, role) VALUES (";
-        $sql.= "'" . $user_data['sid'] . "',";
+        $sql.= "'" . db_escape($db, $user_data['sid']) . "',";
         $sql.= "'" . db_escape($db, $user_data['username']) . "',";
         $sql.= "'" . db_escape($db, $hashed_password) . "',";
         $sql.= "0,";

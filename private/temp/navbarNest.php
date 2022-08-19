@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="navcol-5">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="../index.php"><b>Home</b></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../dashboard.php">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="../about.php">About us</a></li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Account</a>
                         <div class="dropdown-menu">

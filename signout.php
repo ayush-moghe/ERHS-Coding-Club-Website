@@ -2,7 +2,7 @@
 $page_name = 'Sign Out';
 $page_style = 'webpage';
 require_once "./private/init.php";
-require_login();
+require_login('./login/student.php');
 
 if (is_post_request()) {
     $signout = $_POST['signout'] ?? 'no';
