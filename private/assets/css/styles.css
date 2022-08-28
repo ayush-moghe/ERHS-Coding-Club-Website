@@ -41,6 +41,27 @@
     margin: auto;
 }
 
+#sidebar {
+    height: 100vh;
+    position: fixed;
+    background-color: dimgrey;
+    overflow: auto;
+
+
+}
+
+#content {
+    height: 100vh;
+}
+
+.sb-item {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+
+
+
 
 
 

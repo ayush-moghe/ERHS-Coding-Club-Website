@@ -59,3 +59,22 @@ function r_validate_user($user_data, $db) {
 
 
 }
+
+function check_course_enrolled($course_id, $db) {
+    $sql = "SELECT enrollment FROM users WHERE sid='";
+    $sql .= db_escape($db, $_SESSION['sid']). "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $enrollment = mysqli_fetch_assoc($result)['enrollment'] ?? '';
+    mysqli_free_result($result);
+
+    $enrollment = explode(',', $enrollment);
+    foreach($enrollment as $course) {
+        if($course_id == $course) {
+            return true;
+        }
+    }
+
+    return false;
+
+}

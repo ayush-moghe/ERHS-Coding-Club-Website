@@ -71,7 +71,7 @@ if (is_post_request()) {
 
         <?php if($error) { ?>
             <div class="alert alert-danger" role="alert">
-                <strong>Error!</strong> Invalid username or password.
+                <strong>Error!</strong> Your login was invalid.
             </div>
         <?php } ?>
 

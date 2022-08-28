@@ -30,6 +30,10 @@ require_once './private/init.php';
                 <td>YouTube</td>
                 <td><a target="_blank" href="https://www.youtube.com/channel/UC6he2jAFjkNmqfwLRRt-xXg">ERHS Coding Club YouTube</a></td>
             </tr>
+            <tr scope="row">
+                <td>Instagram</td>
+                <td><a target="_blank" href="https://instagram.com/erhscodingclub/">ERHS Coding Club Instagram</a></td>
+            </tr>
             </tbody>
         </table>
     </div>
