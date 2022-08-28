@@ -42,7 +42,7 @@
 }
 
 #sidebar {
-    height: 100vh;
+    height: 92vh;
     position: fixed;
     background-color: dimgrey;
     overflow: auto;
@@ -51,12 +51,29 @@
 }
 
 #content {
-    height: 100vh;
+    height: 100%;
+    position: fixed;
 }
 
-.sb-item {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+
+
+.unit-item {
+    background-color: slategrey;
+    color: green;
+}
+
+.unit-item:hover {
+    background-color: black;
+
+}
+
+
+.unit {
+    background: darkslategrey;
+}
+
+.unit:hover {
+    background: black;
 }
 
 
