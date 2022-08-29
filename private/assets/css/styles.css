@@ -83,6 +83,10 @@
     height: 100% !important;
 }
 
+.reglog:hover {
+    background-color: coral !important;
+}
+
 
 
 

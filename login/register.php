@@ -12,7 +12,7 @@ if( is_post_request() ) {
 
     if ($errors === true) {
         login_user($_POST) ;
-        redirect_to('../index.php');
+        redirect_to('../dashboard.php');
     }
     db_disconnect($ercc_db);
 }
@@ -26,26 +26,22 @@ if( is_post_request() ) {
 
         <form method="post" action="register.php" class="w-75 ps-5 pe-5" style="margin: auto; background-color: rgba(91, 232, 105, 0.63); border-radius: 15px;">
 
-            <div class="h1 fs-sm-5 erhs-h1 text-center mb-4 mt-3" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">Login/ Register</div>
+            <div class="h1 fs-sm-5 erhs-h1 text-center mb-4 mt-3 pe-5 ps-5 pt-3 pb-3" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">Login/ Register</div>
 
             <hr style="opacity: 1; color: white; height: 5px;">
 
-            <ul class="nav nav-pills justify-content-center mt-4">
+            <ul class="nav nav-pills justify-content-center text-center mt-4 d-block">
                 <li class="nav-item me-2 ms-2">
-                    <a class="nav-link bg-dark pe-5 ps-5 pt-3 pb-3" aria-current="page" href="register.php">Register</a>
+                    <a class="nav-link bg-light pe-5 ps-5 pt-3 pb-3 fs-3 reglog" style="border-bottom: 3px solid white;" aria-current="page" href="register.php">Register</a>
                 </li>
-                <li class="nav-item dropdown me-2 ms-2">
-                    <a class="nav-link dropdown-toggle bg-dark pe-5 ps-5 pt-3 pb-3" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Login</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item mb-2" href="student.php">Login as Student</a></li>
-                        <li><a class="dropdown-item mb-2" href="teacher.php">Login as Teacher</a></li>
-                    </ul>
+                <li class="nav-item me-2 ms-2">
+                    <a class="nav-link bg-dark pe-5 ps-5 pt-3 pb-3 fs-3 reglog" href="login.php">Login</a>
                 </li>
             </ul>
 
-            <p class="fs-5 text-center mt-3" style="background-color: rgba(202, 202, 187, 0.47); color: black; border-radius: 15px; border: 2px solid white;"><b>Note: Staff and Teacher Accounts are created by Club Admins such as the Founder and Advisor</b></p>
+            <p class="fs-5 text-center mt-3" style="background-color: rgba(202, 202, 187, 0.47); color: black; border-radius: 15px; border: 2px solid white;"><b>Note:Teacher Accounts are created by Club Admins such as the Founder and Advisor. Teacher accounts are not staff accounts, they are owned by teacher and school staff who don't have a student id.</b></p>
 
-            <div class="h2 erhs-h2 text-center mb-3 mt-3" style="font-family: 'Orbitron', sans-serif;">Student Register</div>
+            <div class="h2 text-light text-center mb-3 mt-3" style="font-family: 'Orbitron', sans-serif;">Register</div>
 
             <div>
                 <label class="form-label mt-2 text-light" for="sid">Student ID</label>

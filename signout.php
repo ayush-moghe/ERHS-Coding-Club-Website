@@ -2,13 +2,13 @@
 $page_name = 'Sign Out';
 $page_style = 'webpage';
 require_once "./private/init.php";
-require_login('./login/student.php');
+require_login('./login/login.php');
 
 if (is_post_request()) {
     $signout = $_POST['signout'] ?? 'no';
     if ($signout == 'yes') {
         logout_user();
-        redirect_to('./login/student.php');
+        redirect_to('./login/login.php');
 
     } elseif ($signout == 'no') {
         redirect_to('index.php');

@@ -2,7 +2,7 @@
 $page_name = 'Dashboard';
 $page_style = 'webpage';
 require_once "./private/init.php";
-require_login('./login/student.php');
+require_login('./login/login.php');
 
 $ercc_db = db_connect('./private/cert/BaltimoreCyberTrustRoot.crt.pem');
 $enrolled_courses = get_enrolled_courses($ercc_db);

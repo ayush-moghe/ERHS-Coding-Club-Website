@@ -2,7 +2,7 @@
 $page_name = 'courseplayer';
 $page_style = 'webpage';
 require_once "../private/init.php";
-require_login('../login/student.php');
+require_login('../login/login.php');
 
 if( !isset($_GET['cid']) or !isset($_GET['uid']) or !isset($_GET['iid']) ) {
     redirect_to('../dashboard.php');

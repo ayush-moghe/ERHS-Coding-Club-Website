@@ -5,7 +5,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="index.php"><b>Home</b></a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About us</a></li>
-                </ul><a class="btn btn-primary ms-md-2" role="button" href="login/student.php">Login/Register</a>
+                </ul><a class="btn btn-primary ms-md-2" role="button" href="login/login.php">Login/Register</a>
             </div>
         </div>
     </nav>
@@ -25,9 +25,6 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-header"><?php echo $_SESSION['username']; ?></div>
                         <div class="dropdown-header">SID: <?php echo $_SESSION['sid']; ?></div>
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Activity</a>
-                        <a class="dropdown-item" href="#">Settings</a>
                     </div>
                 </li>
             </ul><a class="btn btn-primary ms-md-2" role="button" href="signout.php">Sign-out</a>
