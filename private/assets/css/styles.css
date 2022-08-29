@@ -42,16 +42,14 @@
 }
 
 #sidebar {
-    height: 92vh;
     position: fixed;
     background-color: dimgrey;
     overflow: auto;
-
+    height: 90%
 
 }
 
 #content {
-    height: 100%;
     position: fixed;
 }
 
@@ -76,6 +74,14 @@
     background: black;
 }
 
+.quiz {
+    overflow: auto;
+}
+
+.quiz > iframe {
+    width: 100% !important;
+    height: 100% !important;
+}
 
 
 

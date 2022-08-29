@@ -63,6 +63,15 @@ function get_enrolled_courses($db) {
     return $result;
 }
 
+function get_course_by_id($id, $db) {
+    $sql = "SELECT * FROM courses WHERE id='" . db_escape($db, $id) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $course = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $course;
+}
+
 function enroll_course($course_id, $db) {
 
     $sql1 = "SELECT enrollment FROM users WHERE sid='";
@@ -99,4 +108,29 @@ function enroll_course($course_id, $db) {
         exit;
     }
 
+}
+
+function get_units_by_cid($db, $cid) {
+    $sql = "SELECT * FROM units WHERE course_id='". db_escape($db, $cid) . "'";
+    $sql .= " ORDER BY unit_number ASC";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+}
+
+function get_item($db, $id) {
+    $sql = "SELECT * FROM items WHERE id='". db_escape($db, $id) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $item = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $item;
+}
+
+function get_items_by_uid($db, $uid) {
+    $sql = "SELECT * FROM items WHERE unit_id='". db_escape($db, $uid) . "'";
+    $sql .= " ORDER BY item_number ASC";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
 }

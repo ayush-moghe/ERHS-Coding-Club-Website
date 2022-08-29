@@ -41,7 +41,7 @@ if(is_get_request() ) {
                         <p class="card-text" style="color: white;"><b style="color: lawngreen">Description: </b> <?php echo $course['description']; ?></p>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-success ms-md-2" role="button" href="./courses/courseplayer.php?cid=<?php echo $course['id']; ?>">Play</a>
+                        <a class="btn btn-success ms-md-2" role="button" href="courses/courseplayer.php?cid=<?php echo $course['id'] . '&uid=1&iid=1'; ?>">Play</a>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@ if(is_get_request() ) {
                     </div>
                     <div class="card-footer">
                         <?php if( check_course_enrolled($course['id'], $ercc_db) ) { ?>
-                            <a class="btn btn-success ms-md-2" role="button" href="./courses/courseplayer.php?cid=<?php echo $course['id']; ?>">Play</a>
+                            <a class="btn btn-success ms-md-2" role="button" href="courses/courseplayer.php?cid=<?php echo $course['id'] . '&uid=1&iid=1'; ?>">Play</a>
                         <?php } else {?>
                             <a class="btn btn-success ms-md-2" role="button" href="dashboard.php?enroll=<?php echo $course['id']; ?>">Enroll</a>
                         <?php } ?>
