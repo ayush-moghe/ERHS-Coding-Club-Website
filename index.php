@@ -1,7 +1,7 @@
 <?php
 $page_style = "webpage";
 $page_name = "Home";
-$section_classes = ["erhs-section", "erhs-section", "erhs-section", "erhs-section"];
+$section_classes = ["erhs-section", "erhs-section", "erhs-section", "erhs-section", "erhs-section"];
 $tab = $_GET['tab'] ?? 0;
 $section_classes[$tab] = "erhs-section-selected";
 require_once "./private/init.php";
@@ -20,12 +20,13 @@ require_once "./private/init.php";
         <li class="page-item"><a class="page-link" href="?tab=1#tab2">2</a></li>
         <li class="page-item"><a class="page-link" href="?tab=2#tab3">3</a></li>
         <li class="page-item"><a class="page-link" href="?tab=3#tab4">4</a></li>
+        <li class="page-item"><a class="page-link" href="?tab=3#tab5">5</a></li>
     </ul>
     <div class="<?php echo $section_classes[0];?> container mt-5 mb-5" id="tab1">
         <div class="h2 text-center erhs-h2 mt-5" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;" >&lt Description &gt</div>
         <div class="p fs-5 mb-5 text-center erhs-p" style="font-family: 'Courier Prime', monospace;" >In this club, students are given access to a rich variety of courses covering various coding languages. Students
             follow along with the courses and complete substantial projects such as developing video-games or websites.
-            Students also gain volunteer hours for completing course content.</div>
+            Students can become officers for the club and earn volunteer hours.</div>
     </div>
 
     <div class="<?php echo $section_classes[1];?> container mt-5 mb-5" id="tab2">
@@ -39,14 +40,21 @@ require_once "./private/init.php";
         <div class="h2 text-center erhs-h2 mt-5" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;" >&lt Why You Should Join &gt</div>
         <div class="p fs-5 mb-5 text-center erhs-p" style="font-family: 'Courier Prime', monospace;" >A main factor colleges look for in students is early passion. This club allows students to do that by giving them
             free content so they can learn about coding and technology. We also make students do impactful projects which they can put on their applications and portfolios. Students
-            also get volunteer hours for completing courses and attending events/meetings.</div>
+            also get volunteer hours for providing service as a club officer.</div>
     </div>
 
     <div class="<?php echo $section_classes[3];?> container mt-5 mb-5" id="tab4">
         <div class="h2 text-center erhs-h2 mt-5" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">&lt Already Know Coding? &gt</div>
         <div class="p fs-5 mb-5 text-center erhs-p" style="font-family: 'Courier Prime', monospace;" >Students that already know coding can sign up to be a course instructor. This allows them to make their own free course
-            for other students to learn, such as a programming langauge. These students will get a huge amount of volunteer hours for teaching, and will show leadership and management
-            on their portfolio.</div>
+            for other students to learn, such as a programming language. These students will get a huge amount of volunteer hours for teaching, and will show leadership and management
+            on their portfolio. Students who do this will also be part of the officer team.</div>
+    </div>
+
+    <div class="<?php echo $section_classes[3];?> container mt-5 mb-5" id="tab4">
+        <div class="h2 text-center erhs-h2 mt-5" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">&lt Interested in being an officer? &gt</div>
+        <div class="p fs-5 mb-5 text-center erhs-p" style="font-family: 'Courier Prime', monospace;" >Students are interested in being officers can apply through forms/interviews. There are a variety of different services/roles
+         that students can become. Students must show adequate knowledge for those roles through forms/interviews. The forms/interviews can be accessed by being a member of the club and contacting
+        a club staff member or admin. If you are interested in being an officer, please join our socials in our about page and contact us.</div>
     </div>
 
 
