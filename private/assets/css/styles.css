@@ -51,6 +51,7 @@
 
 #content {
     position: fixed;
+    overflow: auto;
 }
 
 
