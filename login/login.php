@@ -33,7 +33,7 @@ if (is_post_request()) {
                 <a class="nav-link bg-dark pe-5 ps-5 pt-3 pb-3 fs-3 reglog" style="border-bottom: 3px solid white;" aria-current="page" href="register.php">Register</a>
             </li>
             <li class="nav-item me-2 ms-2">
-                <a class="nav-link bg-light pe-5 ps-5 pt-3 pb-3 fs-3 reglog" href="login.php">Login</a>
+                <a class="nav-link bg-warning pe-5 ps-5 pt-3 pb-3 fs-3 reglog" href="login.php">Login</a>
             </li>
         </ul>
 
@@ -70,7 +70,6 @@ if (is_post_request()) {
                 <strong>Error!</strong> Your login was invalid.
             </div>
         <?php } ?>
-
         <button type="submit" class="btn btn-lg btn-primary mt-3 mb-3">Login</button>
     </form>
 

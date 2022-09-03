@@ -13,7 +13,7 @@ $course = get_course_by_id($_GET['cid'], $ercc_db);
 $course_units = get_units_by_cid($ercc_db, $_GET['cid']);
 
 ?>
-
+git
 <?php require_once("../private/temp/headerNest.php"); ?>
 <?php require_once("../private/temp/navbarNest.php"); ?>
 
