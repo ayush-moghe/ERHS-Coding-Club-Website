@@ -27,7 +27,7 @@ if(is_get_request() ) {
 
 
 <div class="container">
-    <p class="fs-5 text-center mt-5" style="background-color: rgba(202, 202, 187, 0.47); color: white; border-radius: 15px; border: 2px solid white;"><b>You must enroll in courses to play them.</b></p>
+    <p class="fs-5 text-center mt-5" style="background-color: rgba(202, 202, 187, 0.47); color: white; border-radius: 15px; border: 2px solid white;"><b>You must enroll in courses to play them.<br><br>MOBILE NOT RECOMMENDED FOR PLAYING COURSES</b></p>
     <div class="row w-75 mt-5" style="margin: auto;">
         <h1 class="text-center fs-1" style="color: lightblue">Enrolled Courses</h1>
         <?php while($course = mysqli_fetch_assoc($enrolled_courses)) { ?>
