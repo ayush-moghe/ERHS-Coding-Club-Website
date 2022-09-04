@@ -1,6 +1,6 @@
 <?php
 $page_style = "webpage";
-$page_name = "Student Login";
+$page_name = "Register";
 require_once "../private/init.php";
 
 $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');

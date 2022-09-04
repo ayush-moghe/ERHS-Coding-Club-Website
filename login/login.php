@@ -1,6 +1,6 @@
 <?php
 $page_style = "webpage";
-$page_name = "Student Login";
+$page_name = "Login";
 require_once "../private/init.php";
 
 $error = false;

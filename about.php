@@ -2,6 +2,7 @@
 $page_style = "webpage";
 $page_name = "About";
 require_once './private/init.php';
+$ercc_db = db_connect('./private/cert/BaltimoreCyberTrustRoot.crt.pem');
 ?>
 <?php require_once './private/temp/header.php'; ?>
 <?php require_once './private/temp/navbar.php'; ?>

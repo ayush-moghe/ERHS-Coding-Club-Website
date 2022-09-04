@@ -15,7 +15,7 @@ function register_user($user_data, $db) {
         $sql.= "'" . db_escape($db, $user_data['username']) . "',";
         $sql.= "'" . db_escape($db, $hashed_password) . "',";
         $sql.= "0,";
-        $sql.= "'student,')";
+        $sql.= "'student')";
 
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
@@ -82,7 +82,7 @@ function enroll_course($course_id, $db) {
     mysqli_free_result($result1);
 
     if(empty($enrollment)) {
-        $enrollment = db_escape($db, $course_id . ',');
+        $enrollment = db_escape($db, $course_id);
     } else {
         $enrollment = explode(',', $enrollment);
         foreach($enrollment as $course) {
@@ -91,7 +91,7 @@ function enroll_course($course_id, $db) {
             }
         }
         $enrollment = implode(',', $enrollment);
-        $enrollment .= db_escape($db, $course_id . ',');
+        $enrollment .= db_escape($db, ',' . $course_id);
     }
 
     $sql2 = "UPDATE users SET ";
@@ -151,6 +151,14 @@ function course_link($course, $db) {
     mysqli_free_result($result2);
 
     return "courses/courseplayer.php?cid=" .  (string) $course['id'] . "&uid=" . (string) $unit['id'] . "&iid=" . (string) $item['id'];
+}
 
-
+function user_roles($username, $db) {
+    $sql = "SELECT * FROM users WHERE username='";
+    $sql .= $username . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $roles = mysqli_fetch_assoc($result)['role'] ?? '';
+    mysqli_free_result($result);
+    return $roles;
 }

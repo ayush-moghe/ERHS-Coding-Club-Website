@@ -5,6 +5,7 @@ $section_classes = ["erhs-section", "erhs-section", "erhs-section", "erhs-sectio
 $tab = $_GET['tab'] ?? 0;
 $section_classes[$tab] = "erhs-section-selected";
 require_once "./private/init.php";
+$ercc_db = db_connect('./private/cert/BaltimoreCyberTrustRoot.crt.pem');
 ?>
 
 
@@ -12,7 +13,6 @@ require_once "./private/init.php";
 <?php require_once './private/temp/navbar.php'; ?>
 
 <div class="container-fluid text-center">
-
     <img class="img-fluid" src="./private/assets/img/ERHSCC.png" alt="ERHS Coding Club Logo">
     <div class="h1 erhs-h1 mt-5" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">&lt Welcome to the ERHS Coding Club &gt</div>
     <ul class="pagination pagination-lg justify-content-center mt-5">

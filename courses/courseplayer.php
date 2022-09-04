@@ -76,3 +76,4 @@ $course_units = get_units_by_cid($ercc_db, $_GET['cid']);
         <?php } ?>
 
 </div>
+<?php require_once("../private/temp/footer.php"); ?>

@@ -16,7 +16,7 @@ function enrolled_courses_sql($db) {
 
     $enrolled_courses = explode(',', $enrollment);
     $sql = "id='" . $enrolled_courses[0] . "'";
-    for ($i = 1; $i < count($enrolled_courses) - 1; $i++) {
+    for ($i = 1; $i < count($enrolled_courses); $i++) {
         $sql .= " OR id='" . $enrolled_courses[$i] . "'";
     }
 

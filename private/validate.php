@@ -78,3 +78,16 @@ function check_course_enrolled($course_id, $db) {
     return false;
 
 }
+
+function check_if_role($db, $roles) {
+    $user_roles = user_roles($_SESSION['username'], $db);
+    $user_roles = explode(',', $user_roles);
+    $roles = explode(',', $roles);
+
+    foreach($user_roles as $role) {
+        if( in_array($role, $roles, 1) ) {
+            return true;
+        }
+    }
+    return false;
+}

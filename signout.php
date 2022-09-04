@@ -3,7 +3,7 @@ $page_name = 'Sign Out';
 $page_style = 'webpage';
 require_once "./private/init.php";
 require_login('./login/login.php');
-
+$ercc_db = db_connect('./private/cert/BaltimoreCyberTrustRoot.crt.pem');
 if (is_post_request()) {
     $signout = $_POST['signout'] ?? 'no';
     if ($signout == 'yes') {

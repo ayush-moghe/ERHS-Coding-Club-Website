@@ -18,3 +18,11 @@ function require_login($redirect_url) {
         redirect_to($redirect_url);
     }
 }
+
+function require_role($redirect_url, $roles, $db) {
+
+    if( !check_if_role($db, $roles) ) {
+        redirect_to('../index.php');
+    }
+
+}

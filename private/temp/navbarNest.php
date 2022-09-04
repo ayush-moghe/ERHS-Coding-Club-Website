@@ -25,9 +25,13 @@
                         <div class="dropdown-menu">
                             <div class="dropdown-header"><?php echo $_SESSION['username']; ?></div>
                             <div class="dropdown-header">SID: <?php echo $_SESSION['sid']; ?></div>
+                            <?php if( check_if_role($ercc_db, STAFFROLES) ) {?>
+                                <div class="dropdown-header text-primary"><a style="text-decoration: none;" href="../portal/"><b>Staff Portal</b></a></div>
+                            <?php }?>
                         </div>
                     </li>
-                </ul><a class="btn btn-primary ms-md-2" role="button" href="../signout.php">Sign-out</a>
+                </ul>
+                <a class="btn btn-primary ms-md-2" role="button" href="../signout.php">Sign-out</a>
             </div>
         </div>
     </nav>
