@@ -48,10 +48,10 @@
 #sidebar {
     position: fixed;
     background-color: dimgrey;
+    height: 90%;
     overflow: auto;
-    height: 90%
-
 }
+
 
 #content {
     position: fixed;
@@ -79,20 +79,22 @@
     background: black;
 }
 
-.quiz {
-    overflow: auto;
-}
 
-.quiz > iframe {
-    width: 100% !important;
-    height: 100% !important;
-}
 
 .reglog:hover {
     background-color: coral !important;
 }
 
+.quiz {
+    margin: auto;
+    height: 80vh;
+}
 
+.quiz > iframe {
+    display: block;
+    height: 100% !important;
+    width: 100% !important;
+}
 
 
 
