@@ -23,3 +23,23 @@ function enrolled_courses_sql($db) {
     return $sql;
 
 }
+
+function role_html($color, $name) {
+    return '<div class="h3 mt-5 ps-1 pe-1 ps-1 pe-1 d-inline-block me-2 mb-4" style="border-radius: 8px; border: 3px solid ' . $color . '; color: ' . $color . ';"><i class="bi bi-gem"></i>' . $name . '</div>';
+}
+
+function display_role($role) {
+
+    if($role == 'student') {
+        echo role_html('white', 'Student');
+    }
+
+    if($role == 'admin') {
+        echo role_html('lawngreen', 'Admin');
+    }
+
+    if($role == 'president') {
+        echo role_html('gold', 'President');
+    }
+
+}

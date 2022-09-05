@@ -25,6 +25,10 @@
                         <div class="dropdown-menu">
                             <div class="dropdown-header"><?php echo $_SESSION['username']; ?></div>
                             <div class="dropdown-header">SID: <?php echo $_SESSION['sid']; ?></div>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-header">First Name: <?php echo $_SESSION['first_name'] ?></div>
+                            <div class="dropdown-header">Last Name: <?php echo $_SESSION['last_name'] ?></div>
+                            <div class="dropdown-divider"></div>
                             <?php if( check_if_role($ercc_db, STAFFROLES) ) { ?>
                                 <div class="dropdown-header text-primary"><a style="text-decoration: none;" href="portal/"><b>Staff Portal</b></a></div>
                             <?php } ?>

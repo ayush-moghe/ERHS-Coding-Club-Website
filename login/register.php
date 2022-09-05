@@ -4,7 +4,7 @@ $page_name = "Register";
 require_once "../private/init.php";
 
 $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
-$errors = ['sid' => '', 'username' => '', 'password' => '', 'cpwd' => '', 'present' => false];
+$errors = ['first_name' => '', 'last_name' => '', 'sid' => '', 'username' => '', 'password' => '', 'cpwd' => '', 'present' => false];
 
 if( is_post_request() ) {
 
@@ -41,6 +41,22 @@ if( is_post_request() ) {
 
             <p class="fs-5 text-center mt-3" style="background-color: rgba(202, 202, 187, 0.47); color: black; border-radius: 15px; border: 2px solid white;"><b>Note:Teacher Accounts are created by Club Admins such as the Founder and Advisor. Teacher accounts are not staff accounts, they are owned by teacher and school staff who don't have a student id.</b></p>
             <div class="h2 text-light text-center mb-3 mt-3" style="font-family: 'Orbitron', sans-serif;">Register</div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <label class="form-label mt-2 text-light" for="first_name">First Name</label>
+                    <input type="text" class="form-control form-control-lg" id="first_name" name="first_name" placeholder="Enter first name">
+                    <div class="p text-danger fs-5 bg-dark mt-1" role="alert"><?php echo $errors['first_name'] ?></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label mt-2 text-light" for="last_name">Last Name</label>
+                    <input type="text" class="form-control form-control-lg" id="last_name" name="last_name" placeholder="Enter last name">
+                    <div class="p text-danger fs-5 bg-dark mt-1" role="alert"><?php echo $errors['last_name'] ?></div>
+                </div>
+
+            </div>
 
             <div>
                 <label class="form-label mt-2 text-light" for="sid">Student ID</label>
@@ -86,7 +102,5 @@ if( is_post_request() ) {
         </form>
 
     </div>
-
-
 
 <?php require_once "../private/temp/footer.php"; ?>

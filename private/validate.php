@@ -29,7 +29,17 @@ function user_exists($username, $db) {
 }
 
 function r_validate_user($user_data, $db) {
-    $errors = ['sid' => '', 'username' => '', 'password' => '', 'cpwd' => '', 'present' => false];
+    $errors = ['first_name' => '', 'last_name' => '' ,'sid' => '', 'username' => '', 'password' => '', 'cpwd' => '', 'present' => false];
+
+    if(!preg_match('/^[A-Z]{1}[a-z]{2}/', $user_data['first_name'])) {
+        $errors['first_name'] = "First name must start with a capital letter, must have no numbers or special characters, and must be at least 3 characters long.";
+        $errors['present'] = true;
+    }
+
+    if(!preg_match('/^[A-Z]{1}[a-z]{2}/', $user_data['last_name'])) {
+        $errors['last_name'] = "Last name must start with a capital letter, must have no numbers or special characters, and must be at least 3 characters long.";
+        $errors['present'] = true;
+    }
 
     if( !preg_match('/^[0-9]{6}$/', $user_data['sid'])) {
         $errors['sid'] = 'Student ID must be 6 digits';
