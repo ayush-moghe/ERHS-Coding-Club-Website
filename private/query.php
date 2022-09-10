@@ -164,3 +164,10 @@ function user_roles($username, $db) {
     mysqli_free_result($result);
     return $roles;
 }
+
+function all_users($db) {
+    $sql = "SELECT * FROM users";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+}
