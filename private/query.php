@@ -26,6 +26,30 @@ function register_user($user_data, $db) {
 
 }
 
+function register_teacher($user_data, $db) {
+
+    $errors = r_validate_teacher($user_data, $db);
+
+    if($errors['present']) {
+        return $errors;
+    } else {
+        $hashed_password = password_hash($user_data['password'], PASSWORD_DEFAULT);
+
+        $sql = "INSERT INTO users (first_name, last_name, sid, username, password, verified, role) VALUES (";
+        $sql.= "'" . db_escape($db, $user_data['first_name']) . "',";
+        $sql.= "'" . db_escape($db, $user_data['last_name']) . "',";
+        $sql.= "'" . 'Teacher' . "',";
+        $sql.= "'" . db_escape($db, $user_data['username']) . "',";
+        $sql.= "'" . db_escape($db, $hashed_password) . "',";
+        $sql.= "0,";
+        $sql.= "'teacher,member')";
+
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        return true;
+    }
+}
+
 function member_login($user_data, $db) {
 
     $sid = $user_data['sid'] ?? '';
@@ -48,6 +72,28 @@ function member_login($user_data, $db) {
         return false;
     }
 
+}
+
+function teacher_login($user_data, $db) {
+
+    $username = $user_data['username'] ?? '';
+    $password = $user_data['password'] ?? '';
+
+    $sql = "SELECT * FROM users WHERE username='";
+    $sql.= db_escape($db, $username) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $fetched_data = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    $fetched_username = $fetched_data['username'] ?? '';
+    $fetched_password = $fetched_data['password'] ?? '';
+
+    if( $fetched_username === $username && password_verify($password, $fetched_password)) {
+        login_teacher($fetched_data);
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function get_approved_courses($db) {
@@ -76,8 +122,8 @@ function get_course_by_id($id, $db) {
 
 function enroll_course($course_id, $db) {
 
-    $sql1 = "SELECT enrollment FROM users WHERE sid='";
-    $sql1 .= db_escape($db, $_SESSION['sid']). "'";
+    $sql1 = "SELECT enrollment FROM users WHERE username='";
+    $sql1 .= db_escape($db, $_SESSION['username']). "'";
     $result1 = mysqli_query($db, $sql1);
     confirm_result_set($result1);
     $enrollment = mysqli_fetch_assoc($result1)['enrollment'] ?? '';
@@ -98,7 +144,7 @@ function enroll_course($course_id, $db) {
 
     $sql2 = "UPDATE users SET ";
     $sql2 .= "enrollment='" . db_escape($db, $enrollment) . "' ";
-    $sql2 .= "WHERE sid='" . db_escape($db, $_SESSION['sid']) . "' ";
+    $sql2 .= "WHERE username='" . db_escape($db, $_SESSION['username']) . "' ";
     $sql2 .= "LIMIT 1";
     $result2 = mysqli_query($db, $sql2);
 

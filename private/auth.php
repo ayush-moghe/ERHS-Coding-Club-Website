@@ -9,6 +9,14 @@ function login_user($user_data) {
 
 }
 
+function login_teacher($user_data) {
+    session_regenerate_id();
+    $_SESSION['first_name'] = $user_data['first_name'];
+    $_SESSION['last_name'] = $user_data['last_name'];
+    $_SESSION['sid'] = 'Teacher';
+    $_SESSION['username'] = $user_data['username'];
+}
+
 function logout_user() {
     unset($_SESSION['first_name']);
     unset($_SESSION['last_name']);

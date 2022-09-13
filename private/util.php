@@ -7,8 +7,8 @@ function style($tag) {
 }
 
 function enrolled_courses_sql($db) {
-    $sql1 = "SELECT enrollment FROM users WHERE sid='";
-    $sql1 .= db_escape($db, $_SESSION['sid']). "'";
+    $sql1 = "SELECT enrollment FROM users WHERE username='";
+    $sql1 .= db_escape($db, $_SESSION['username']). "'";
     $result1 = mysqli_query($db, $sql1);
     confirm_result_set($result1);
     $enrollment = mysqli_fetch_assoc($result1)['enrollment'] ?? '';

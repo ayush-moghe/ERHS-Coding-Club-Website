@@ -13,7 +13,7 @@ $user_set = all_users($ercc_db);
 
 <div class="h1 text-light text-center mt-5" style="font-family: 'Montserrat', sans-serif;">User Table</div>
 
-<div class="table-responsive-md mt-5 ">
+<div class="table-responsive-md mt-5 mb-5 ">
 
     <table class="table table-hover table-success table-bordered w-75 text-center" style="margin: auto;">
 

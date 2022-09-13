@@ -7,7 +7,7 @@ $error = false;
 $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 
 if (is_post_request()) {
-    $try_login = member_login($_POST, $ercc_db);
+    $try_login = teacher_login($_POST, $ercc_db);
     if ($try_login === true) {
         redirect_to('../dashboard.php');
     } else {
@@ -24,7 +24,7 @@ if (is_post_request()) {
 <div class="container-fluid">
     <form method="post" action="login.php" class="w-75 ps-5 pe-5" style="margin: auto; background-color: rgba(91, 232, 105, 0.63); border-radius: 15px;">
 
-        <div class="h1 fs-sm-5 erhs-h1 text-center mb-4 mt-3" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">Login/ Register</div>
+        <div class="h1 fs-sm-5 erhs-h1 text-center mb-4 mt-3" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">Teacher Login/ Register</div>
 
         <hr style="opacity: 1; color: white; height: 5px;">
 
@@ -37,16 +37,8 @@ if (is_post_request()) {
             </li>
         </ul>
 
-        <p class="fs-5 text-center mt-3" style="background-color: rgba(202, 202, 187, 0.47); color: black; border-radius: 15px; border: 2px solid white;"><a href="../teacher/login.php"><b>Are you a teacher? Login here instead.</b></a></p>
-        <div class="h2 text-light text-center mb-3 mt-3" style="font-family: 'Orbitron', sans-serif;">Login</div>
-
-        <div>
-            <label class="form-label mt-2 text-light" for="sid">Student ID</label>
-            <div class="input-group input-group-lg">
-                <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-credit-card-2-front"></i></span>
-                <input type="text" class="form-control" id="sid" name="sid" placeholder="Enter id">
-            </div>
-        </div>
+        <p class="fs-5 text-center mt-3" style="background-color: rgba(202, 202, 187, 0.47); color: black; border-radius: 15px; border: 2px solid white;"><a href="../teacher/login.php"><b>Are you a student? Login here instead.</b></a></p>
+        <div class="h2 text-light text-center mb-3 mt-3" style="font-family: 'Orbitron', sans-serif;">Teacher Login</div>
 
         <div>
             <label class="form-label mt-2 text-light" for="username">Username</label>
@@ -79,4 +71,3 @@ if (is_post_request()) {
 
 
 <?php require_once "../private/temp/footer.php"; ?>
-
