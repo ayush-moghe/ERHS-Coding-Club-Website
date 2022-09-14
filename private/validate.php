@@ -105,8 +105,8 @@ function r_validate_teacher($user_data, $db) {
 }
 
 function check_course_enrolled($course_id, $db) {
-    $sql = "SELECT enrollment FROM users WHERE sid='";
-    $sql .= db_escape($db, $_SESSION['sid']). "'";
+    $sql = "SELECT enrollment FROM users WHERE username='";
+    $sql .= db_escape($db, $_SESSION['username']). "'";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $enrollment = mysqli_fetch_assoc($result)['enrollment'] ?? '';
