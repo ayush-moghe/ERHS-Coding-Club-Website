@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-const STAFFROLES = 'admin,staff,coursemaker,media,secretary,historian,treasure,teacher';
+const STAFFROLES = 'admin,officer,coursemaker,media,secretary,historian,treasure,teacher,president,vicepresident';
 require_once('util.php');
 require_once('route.php');
 require_once('database.php');

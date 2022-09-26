@@ -42,4 +42,28 @@ function display_role($role) {
         echo role_html('gold', 'President');
     }
 
+    if($role == 'vicepresident') {
+        echo role_html('orange', 'Vice President');
+    }
+
+    if($role == 'secretary') {
+        echo role_html('blue', 'Secretary');
+    }
+
+    if($role == 'treasurer') {
+        echo role_html('green', 'Treasurer');
+    }
+
+    if($role == 'officer') {
+        echo role_html('black', 'Officer');
+    }
+
+    if($role == 'historian') {
+        echo role_html('brown', 'Historian');
+    }
+
+    if($role == 'teacher') {
+        echo role_html('grey', 'Teacher');
+    }
+
 }
