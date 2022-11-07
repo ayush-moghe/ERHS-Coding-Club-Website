@@ -217,3 +217,21 @@ function all_users($db) {
     confirm_result_set($result);
     return $result;
 }
+
+function update_verification($db, $uid) {
+
+    $sql = "SELECT verified FROM users WHERE id='" . db_escape($db, $uid) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $verified = mysqli_fetch_assoc($result)['verified'] ?? '0';
+    mysqli_free_result($result);
+
+    if($verified == 0) {
+        $sql_verify = "UPDATE users SET verified=1 WHERE id='" . db_escape($db, $uid) . "'";
+        $result_verify = mysqli_query($db, $sql_verify);
+    } elseif($verified == 1) {
+        $sql_unverify = "UPDATE users SET verified=0 WHERE id='" . db_escape($db, $uid) . "'";
+        $result_unverify = mysqli_query($db, $sql_unverify);
+    }
+
+}

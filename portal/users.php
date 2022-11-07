@@ -4,7 +4,7 @@ $page_style = 'webpage';
 require_once "../private/init.php";
 $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 require_login('../login/login.php');
-require_role('../index.php', STAFFROLES, $ercc_db);
+require_role(STAFFROLES, $ercc_db);
 $user_set = all_users($ercc_db);
 ?>
 

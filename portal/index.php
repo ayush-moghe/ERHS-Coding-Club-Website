@@ -4,7 +4,7 @@ $page_style = 'portal';
 require_once "../private/init.php";
 $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 require_login('../login/login.php');
-require_role('../index.php', STAFFROLES, $ercc_db);
+require_role(STAFFROLES, $ercc_db);
 $roles = explode( ',' , user_roles($_SESSION['username'], $ercc_db) );
 ?>
 
@@ -20,6 +20,7 @@ $roles = explode( ',' , user_roles($_SESSION['username'], $ercc_db) );
             <div class="dropdown-divider" style="border-color: white;"></div>
             <li class="fs-5 mt-2 text-light"><a href="coursemaker.php">Course Maker</a></li>
             <li class="fs-5 mt-2 text-light"><a href="users.php">User Table</a></li>
+            <li class="fs-5 mt-2 text-light"><a href="verify.php">Verification Hub</a></li>
         </ul>
     </div>
     <div class="page-content-wrapper">

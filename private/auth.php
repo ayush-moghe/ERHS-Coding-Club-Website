@@ -31,7 +31,7 @@ function require_login($redirect_url) {
     }
 }
 
-function require_role($redirect_url, $roles, $db) {
+function require_role($roles, $db) {
 
     if( !check_if_role($db, $roles) ) {
         redirect_to('../index.php');
