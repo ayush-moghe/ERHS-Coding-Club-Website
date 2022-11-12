@@ -36,16 +36,41 @@ $user_set = all_users($ercc_db);
         <tbody>
 
             <?php while($users = mysqli_fetch_assoc( $user_set )) { ?>
-                <tr scope="row">
-                    <td><?php echo $users['id']; ?></td>
-                    <td><?php echo $users['sid']; ?></td>
-                    <td><?php echo $users['first_name']?></td>
-                    <td><?php echo $users['last_name']?></td>
-                    <td><?php echo $users['username']; ?></td>
-                    <td><?php echo $users['verified']; ?></td>
-                    <td><?php echo $users['role']; ?></td>
-                    <td><?php echo $users['enrollment']; ?></td>
+                <?php if($users['username'] == $_SESSION['username']) { ?>
+                    <tr scope="row" class="table-danger">
+                        <td><?php echo $users['id']; ?></td>
+                        <td><?php echo $users['sid']; ?></td>
+                        <td><?php echo $users['first_name']?></td>
+                        <td><?php echo $users['last_name']?></td>
+                        <td><?php echo $users['username']; ?></td>
+                        <td>
+                            <?php if($users['verified'] == 1) { ?>
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                            <?php } else { ?>
+                                <i class="bi bi-x-circle-fill text-danger"></i>
+                            <?php } ?>
+                        </td>
+                        <td><?php echo $users['role']; ?></td>
+                        <td><?php echo $users['enrollment']; ?></td>
+                    </tr>
+                <?php } else { ?>
+                    <tr scope="row">
+                        <td><?php echo $users['id']; ?></td>
+                        <td><?php echo $users['sid']; ?></td>
+                        <td><?php echo $users['first_name']?></td>
+                        <td><?php echo $users['last_name']?></td>
+                        <td><?php echo $users['username']; ?></td>
+                        <td>
+                            <?php if($users['verified'] == 1) { ?>
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                            <?php } else { ?>
+                                <i class="bi bi-x-circle-fill text-danger"></i>
+                            <?php } ?>
+                        </td>
+                        <td><?php echo $users['role']; ?></td>
+                        <td><?php echo $users['enrollment']; ?></td>
                 </tr>
+                    <?php } ?>
             <?php } ?>
 
         </tbody>

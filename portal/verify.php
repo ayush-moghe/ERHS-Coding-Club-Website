@@ -42,29 +42,58 @@ if (is_post_request()) {
         <tbody>
 
         <?php while($users = mysqli_fetch_assoc( $user_set )) { ?>
-            <tr scope="row">
-                <td><?php echo $users['id']; ?></td>
-                <td><?php echo $users['sid']; ?></td>
-                <td><?php echo $users['first_name']?></td>
-                <td><?php echo $users['last_name']?></td>
-                <td><?php echo $users['username']; ?></td>
-                <td><?php echo $users['verified']; ?></td>
-                <td><?php echo $users['role']; ?></td>
-                <td><?php echo $users['enrollment']; ?></td>
-                <td>
-                    <?php if($users['verified'] == 0) { ?>
-                        <form action="verify.php" method="post">
-                            <input type="hidden" name="id" value="<?php echo $users['id']; ?>">
-                            <input type="submit" name="verify" value="Verify" class="btn btn-success">
-                        </form>
-                    <?php } elseif($users['verified'] == 1) { ?>
-                        <form action="verify.php" method="post">
-                            <input type="hidden" name="id" value="<?php echo $users['id']; ?>">
-                            <input type="submit" name="unverify" value="Unverify" class="btn btn-danger">
-                        </form>
-                    <?php } ?>
-                </td>
-            </tr>
+             <?php if($users['username'] == $_SESSION['username']) { ?>
+                <tr scope="row" class="table-danger">
+                    <td><?php echo $users['id']; ?></td>
+                    <td><?php echo $users['sid']; ?></td>
+                    <td><?php echo $users['first_name']?></td>
+                    <td><?php echo $users['last_name']?></td>
+                    <td><?php echo $users['username']; ?></td>
+                    <td>
+                        <?php if($users['verified'] == 1) { ?>
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                        <?php } else { ?>
+                            <i class="bi bi-x-circle-fill text-danger"></i>
+                        <?php } ?>
+                    </td>
+                    <td><?php echo $users['role']; ?></td>
+                    <td><?php echo $users['enrollment']; ?></td>
+                    <td>N/A</td>
+                </tr>
+
+            <?php } else { ?>
+                <tr scope="row">
+                    <td><?php echo $users['id']; ?></td>
+                    <td><?php echo $users['sid']; ?></td>
+                    <td><?php echo $users['first_name']?></td>
+                    <td><?php echo $users['last_name']?></td>
+                    <td><?php echo $users['username']; ?></td>
+                    <td>
+                        <?php if($users['verified'] == 1) { ?>
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                        <?php } else { ?>
+                            <i class="bi bi-x-circle-fill text-danger"></i>
+                        <?php } ?>
+                    </td>
+                    <td><?php echo $users['role']; ?></td>
+                    <td><?php echo $users['enrollment']; ?></td>
+                    <td>
+                        <?php if($users['verified'] == 0 and check_if_role($ercc_db, 'admin,teacher')) { ?>
+                            <form action="verify.php" method="post">
+                                <input type="hidden" name="id" value="<?php echo $users['id']; ?>">
+                                <input type="submit" name="verify" value="Verify" class="btn btn-success">
+                            </form>
+                        <?php } elseif($users['verified'] == 1 and check_if_role($ercc_db, 'admin,teacher')) { ?>
+                            <form action="verify.php" method="post">
+                                <input type="hidden" name="id" value="<?php echo $users['id']; ?>">
+                                <input type="submit" name="unverify" value="Unverify" class="btn btn-danger">
+                            </form>
+                        <?php } else {
+                            echo "<div class='text-light bg-danger' style='border-radius: 10px;'>NO PERMISSION</div>";
+                        } ?>
+                    </td>
+                </tr>
+            <?php } ?>
         <?php } ?>
 
         </tbody>
