@@ -39,7 +39,7 @@ if( is_post_request() ) {
             </li>
         </ul>
 
-        <p class="fs-5 text-center mt-3" style="background-color: rgba(202, 202, 187, 0.47); color: black; border-radius: 15px; border: 2px solid white;"><a href="../teacher/register.php"><b>Are you a student? Register here instead.</b></a></p>
+        <p class="fs-5 text-center mt-3" style="background-color: rgba(202, 202, 187, 0.47); color: black; border-radius: 15px; border: 2px solid white;"><a href="../login/register.php"><b>Are you a student? Register here instead.</b></a></p>
         <div class="h2 text-light text-center mb-3 mt-3" style="font-family: 'Orbitron', sans-serif;">Teacher Register</div>
 
         <div class="row">
