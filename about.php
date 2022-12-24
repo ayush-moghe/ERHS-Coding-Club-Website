@@ -35,6 +35,10 @@ $ercc_db = db_connect('./private/cert/BaltimoreCyberTrustRoot.crt.pem');
                 <td>Instagram</td>
                 <td><a target="_blank" href="https://instagram.com/erhscodingclub/">ERHS Coding Club Instagram</a></td>
             </tr>
+            <tr scope="row">
+                <td>Remind</td>
+                <td><a target="_blank" href="https://www.remind.com/join/erhscoding">ERHS Coding Club Remind</a></td>
+            </tr>
             </tbody>
         </table>
     </div>
