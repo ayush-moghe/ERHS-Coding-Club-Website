@@ -67,3 +67,12 @@ function display_role($role) {
     }
 
 }
+
+function total_units($db, $cid) {
+    $sql = "SELECT * FROM units WHERE course_id='" . db_escape($db, $cid) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $total = mysqli_num_rows($result);
+    mysqli_free_result($result);
+    return $total;
+}

@@ -135,3 +135,14 @@ function check_if_role($db, $roles) {
     }
     return false;
 }
+
+function course_exists($db, $course_name) {
+    $sql = "SELECT * FROM courses WHERE course_name='";
+    $sql .= db_escape($db, $course_name) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $course_count = mysqli_num_rows($result);
+    mysqli_free_result($result);
+
+    return $course_count === 0 ? false : true;
+}

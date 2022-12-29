@@ -5,6 +5,26 @@ require_once "../private/init.php";
 $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 require_login('../login/login.php');
 require_role( STAFFROLES, $ercc_db);
+
+$errors = '';
+if (is_post_request()) {
+
+
+    $course_name = $_POST['course_name'] ?? '';
+    $course_description = $_POST['course_description'] ?? '';
+
+    if( course_exists($ercc_db, $course_name) ) {
+        $errors = "Course already exists";
+    }
+    else {
+        create_course($ercc_db, $course_name, $course_description);
+
+    }
+
+
+}
+
+
 ?>
 
 <?php require_once "../private/temp/headerNest.php"; ?>
@@ -17,7 +37,9 @@ require_role( STAFFROLES, $ercc_db);
             <li class="sidebar-brand fs-3 bg-light" style="color: black"><b>MY PORTAL</b></li>
             <li class="fs-4 mt-4" style="color: gold"><b>Services ⚙️</b></li>
             <div class="dropdown-divider" style="border-color: white;"></div>
-            <li class="fs-5 mt-2 text-light"><a href="coursemaker.php">Course Maker</a></li>
+            <li class="fs-5 mt-2 text-light"><a href="index.php">Home</a></li>
+            <li class="fs-5 mt-2 text-light"><a style="background-color: white; color: black;" href="coursemaker.php">Course Maker</a></li>
+            <li class="fs-5 mt-2 text-light"><a href="coursemanager.php">Course Manager</a></li>
             <li class="fs-5 mt-2 text-light"><a href="users.php">User Table</a></li>
             <li class="fs-5 mt-2 text-light"><a href="verify.php">Verification Hub</a></li>
         </ul>
@@ -44,6 +66,7 @@ require_role( STAFFROLES, $ercc_db);
                                     <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-collection-play-fill"></i></span>
                                     <input type="text" class="form-control" id="course_name" name="course_name" placeholder="Enter Course Name">
                                 </div>
+                                <div class="p text-danger fs-5 bg-dark mt-1" role="alert"><?php echo $errors; ?></div>
 
                             </div>
 

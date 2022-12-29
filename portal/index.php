@@ -18,7 +18,9 @@ $roles = explode( ',' , user_roles($_SESSION['username'], $ercc_db) );
             <li class="sidebar-brand fs-3 bg-light" style="color: black"><b>MY PORTAL</b></li>
             <li class="fs-4 mt-4" style="color: gold"><b>Services ⚙️</b></li>
             <div class="dropdown-divider" style="border-color: white;"></div>
+            <li class="fs-5 mt-2 text-light"><a style="background-color: white; color: black;" href="index.php">Home</a></li>
             <li class="fs-5 mt-2 text-light"><a href="coursemaker.php">Course Maker</a></li>
+            <li class="fs-5 mt-2 text-light"><a href="coursemanager.php">Course Manager</a></li>
             <li class="fs-5 mt-2 text-light"><a href="users.php">User Table</a></li>
             <li class="fs-5 mt-2 text-light"><a href="verify.php">Verification Hub</a></li>
         </ul>

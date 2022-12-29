@@ -96,6 +96,17 @@
     width: 100% !important;
 }
 
+#previewStudio:hover {
+    background-color: blue !important;
+}
+
+.schema_checkbox {
+    zoom: 1.5;
+}
+
+.schema_checkbox:checked {
+    background-color: red;
+}
 
 
 

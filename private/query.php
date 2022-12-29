@@ -235,3 +235,54 @@ function update_verification($db, $uid) {
     }
 
 }
+
+function create_course($db, $course_name, $course_description) {
+    $sql = "INSERT INTO courses (course_name, author, approved, description) ";
+    $sql .= "VALUES ('" . db_escape($db, $course_name) . "', '";
+    $sql .= db_escape($db, $_SESSION['username']) . "', '";
+    $sql .= db_escape($db, 0) . "', '";
+    $sql .= db_escape($db, $course_description) . "')";
+    $result = mysqli_query($db, $sql);
+    if($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
+function all_courses($db) {
+    $sql = "SELECT * FROM courses";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+}
+
+function add_unit($db, $cid, $unit_name) {
+    $sql = "INSERT INTO units (unit_name, unit_number, course_id) ";
+    $sql .= "VALUES ('" . db_escape($db, $unit_name) . "', '";
+    $sql .= db_escape($db, total_units($db, $cid) + 1 ) . "', '";
+    $sql .= db_escape($db, $cid) . "')";
+    $result = mysqli_query($db, $sql);
+    if($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
+function edit_unit($db, $uid, $unit_name) {
+    $sql = "UPDATE units SET unit_name='" . db_escape($db, $unit_name) . "' ";
+    $sql .= "WHERE id='" . db_escape($db, $uid) . "'";
+    $result = mysqli_query($db, $sql);
+    if($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
