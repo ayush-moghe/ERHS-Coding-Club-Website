@@ -1,6 +1,6 @@
 <?php
 $page_style = 'portal';
-$page_name = 'Add Unit';
+$page_name = 'Edit Unit';
 require_once "../../private/init.php";
 $ercc_db = db_connect('../../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 require_login('../../login/login.php');

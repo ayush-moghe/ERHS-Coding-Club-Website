@@ -76,3 +76,34 @@ function total_units($db, $cid) {
     mysqli_free_result($result);
     return $total;
 }
+
+function getYoutubeID($url) {
+    $parts = parse_url($url);
+    if(isset($parts['query'])){
+        parse_str($parts['query'], $qs);
+        if(isset($qs['v'])){
+            return $qs['v'];
+        }else if(isset($qs['vi'])){
+            return $qs['vi'];
+        }
+    }
+    if(isset($parts['path'])){
+        $path = explode('/', trim($parts['path'], '/'));
+        return $path[count($path)-1];
+    }
+    return false;
+}
+
+function getYoutubeEmbedUrl($url) {
+    $id = getYoutubeID($url);
+    return 'https://www.youtube.com/embed/' . $id;
+}
+
+function total_items($db, $cid, $uid) {
+    $sql = "SELECT * FROM items WHERE course_number='" . db_escape($db, $cid) . "' AND unit_id='" . db_escape($db, $uid) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $total = mysqli_num_rows($result);
+    mysqli_free_result($result);
+    return $total;
+}

@@ -286,3 +286,23 @@ function edit_unit($db, $uid, $unit_name) {
         exit;
     }
 }
+
+function add_video($db, $cid, $uid, $video_name, $video_url, $video_desc) {
+    $sql = "INSERT INTO items (item_name, item_number, unit_id, course_number,type, content, item_description) ";
+    $sql .= "VALUES ('" . db_escape($db, $video_name) . "', '";
+    $sql .= db_escape($db, total_items($db, $cid, $uid) + 1 ) . "', '";
+    $sql .= db_escape($db, $uid) . "', '";
+    $sql .= db_escape($db, $cid) . "', '";
+    $sql .= db_escape($db, 'VID') . "', '";
+    $sql .= db_escape($db, getYoutubeEmbedUrl($video_url) ) . "', '";
+    $sql .= db_escape($db, $video_desc) . "')";
+    $result = mysqli_query($db, $sql);
+    if($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+
+}
