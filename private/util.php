@@ -107,3 +107,10 @@ function total_items($db, $cid, $uid) {
     mysqli_free_result($result);
     return $total;
 }
+
+function convertQuizEmbedded($iframe_html) {
+    $iframe_html = preg_replace('/height=[\"\'][0-9]+[\"\']/i', 'height="100%"', $iframe_html);
+    $iframe_html = preg_replace('/width=[\"\'][0-9]+[\"\']/i', 'width="100%"', $iframe_html);
+    return $iframe_html;
+}
+

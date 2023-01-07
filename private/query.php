@@ -166,6 +166,15 @@ function get_units_by_cid($db, $cid) {
     return $result;
 }
 
+function get_unit($db, $id) {
+    $sql = "SELECT * FROM units WHERE id='". db_escape($db, $id) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $unit = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $unit;
+}
+
 function get_item($db, $id) {
     $sql = "SELECT * FROM items WHERE id='". db_escape($db, $id) . "'";
     $result = mysqli_query($db, $sql);
@@ -287,15 +296,16 @@ function edit_unit($db, $uid, $unit_name) {
     }
 }
 
-function add_video($db, $cid, $uid, $video_name, $video_url, $video_desc) {
-    $sql = "INSERT INTO items (item_name, item_number, unit_id, course_number,type, content, item_description) ";
+function add_video($db, $cid, $uid, $video_name, $video_url, $video_desc, $unit_number) {
+    $sql = "INSERT INTO items (item_name, item_number, unit_id, course_number,type, content, item_description, unit_number) ";
     $sql .= "VALUES ('" . db_escape($db, $video_name) . "', '";
     $sql .= db_escape($db, total_items($db, $cid, $uid) + 1 ) . "', '";
     $sql .= db_escape($db, $uid) . "', '";
     $sql .= db_escape($db, $cid) . "', '";
     $sql .= db_escape($db, 'VID') . "', '";
-    $sql .= db_escape($db, getYoutubeEmbedUrl($video_url) ) . "', '";
-    $sql .= db_escape($db, $video_desc) . "')";
+    $sql .= db_escape($db, getYoutubeEmbedUrl($video_url)) . "', '";
+    $sql .= db_escape($db, $video_desc) . "', '";
+    $sql .= db_escape($db, $unit_number) . "')";
     $result = mysqli_query($db, $sql);
     if($result) {
         return true;
@@ -305,4 +315,80 @@ function add_video($db, $cid, $uid, $video_name, $video_url, $video_desc) {
         exit;
     }
 
+}
+
+function edit_video($db, $video_id, $video_name, $video_url, $video_desc) {
+
+    $target_video = get_item($db, $video_id);
+    if( str_replace(' ', '', $video_name) == '') {
+        $video_name = $target_video['item_name'];
+    }
+    if( str_replace(' ', '', $video_url)== '') {
+        $video_url = $target_video['content'];
+    }
+    if( str_replace(' ', '', $video_desc) == '') {
+        $video_desc = $target_video['item_description'];
+    }
+    $sql = "UPDATE items SET item_name='" . db_escape($db, $video_name) . "', ";
+    $sql .= "content='" . db_escape($db, getYoutubeEmbedUrl($video_url)) . "', ";
+    $sql .= "item_description='" . db_escape($db, $video_desc) . "' ";
+    $sql .= "WHERE id='" . db_escape($db, $video_id) . "'";
+    $result = mysqli_query($db, $sql);
+    if($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+
+
+}
+
+function add_quiz($db, $cid, $uid, $quiz_name, $quiz_url, $quiz_desc, $unit_number) {
+    $sql = "INSERT INTO items (item_name, item_number, unit_id, course_number,type, content, item_description, unit_number) ";
+    $sql .= "VALUES ('" . db_escape($db, $quiz_name) . "', '";
+    $sql .= db_escape($db, total_items($db, $cid, $uid) + 1 ) . "', '";
+    $sql .= db_escape($db, $uid) . "', '";
+    $sql .= db_escape($db, $cid) . "', '";
+    $sql .= db_escape($db, 'QUIZ') . "', '";
+    $sql .= db_escape($db, convertQuizEmbedded($quiz_url) ) . "', '";
+    $sql .= db_escape($db, $quiz_desc) . "', '";
+    $sql .= db_escape($db, $unit_number) . "')";
+    $result = mysqli_query($db, $sql);
+    if($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+
+}
+
+function edit_quiz($db, $quiz_id, $quiz_name, $quiz_url, $quiz_desc)
+{
+
+    $target_quiz = get_item($db, $quiz_id);
+    if (str_replace(' ', '', $quiz_name) == '') {
+        $quiz_name = $target_quiz['item_name'];
+    }
+    if (str_replace(' ', '', $quiz_url) == '') {
+        $quiz_url = $target_quiz['content'];
+    }
+    if (str_replace(' ', '', $quiz_desc) == '') {
+        $quiz_desc = $target_quiz['item_description'];
+    }
+    $sql = "UPDATE items SET item_name='" . db_escape($db, $quiz_name) . "', ";
+    $sql .= "content='" . db_escape($db, convertQuizEmbedded($quiz_url)) . "', ";
+    $sql .= "item_description='" . db_escape($db, $quiz_desc) . "' ";
+    $sql .= "WHERE id='" . db_escape($db, $quiz_id) . "'";
+    $result = mysqli_query($db, $sql);
+    if ($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
 }

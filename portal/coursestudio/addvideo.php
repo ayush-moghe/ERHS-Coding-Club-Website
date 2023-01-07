@@ -13,13 +13,12 @@ if ( is_post_request() ) {
 
     if( isset($_POST['add_video']) ) {
 
-        $target_unit = $_POST['unit_select'];
+        $target_unit = get_unit($ercc_db, $_POST['unit_select']);
         $video_name = $_POST['video_name'];
         $video_url = $_POST['video_url'];
         $video_desc = $_POST['video_desc'];
 
-        add_video($ercc_db, $target_course['id'], $target_unit, $video_name, $video_url, $video_desc);
-
+        add_video($ercc_db, $target_course['id'], $target_unit['id'], $video_name, $video_url, $video_desc, $target_unit['unit_number']);
 
     }
 
