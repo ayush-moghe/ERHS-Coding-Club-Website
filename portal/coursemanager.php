@@ -6,33 +6,7 @@
  require_login('../login/login.php');
  require_role( STAFFROLES, $ercc_db);
 
- $courses = all_courses($ercc_db);
 
- if ( is_post_request() ) {
-
-     if( isset($_POST['course']) ) {
-
-         $course = $_POST['course'];
-         $_SESSION['target_course'] = $course;
-         redirect_to('coursestudio/addunit.php');
-
-     } elseif ( isset($_POST['preview']) ) {
-         redirect_to('../courses/preview.php' . preview_link(  $_POST['preview'], $ercc_db ) );
-
-     } elseif ( isset($_POST['approve']) ) {
-         approve_course($ercc_db, $_POST['approve']);
-
-     } elseif ( isset($_POST['disapprove']) ) {
-         disapprove_course($ercc_db, $_POST['disapprove']);
-
-     } elseif ( isset($_POST['delete']) ) {
-         delete_course($ercc_db, $_POST['delete']);
-         redirect_to('coursemanager.php');
-
-     }
-
-
- }
 
  ?>
 
