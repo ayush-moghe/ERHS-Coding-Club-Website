@@ -20,6 +20,9 @@ if ( is_post_request() ) {
 
         add_video($ercc_db, $target_course['id'], $target_unit['id'], $video_name, $video_url, $video_desc, $target_unit['unit_number']);
 
+    } elseif ( isset($_POST['delete']) ) {
+        schema_delete($ercc_db, $_POST['schema']);
+        redirect_to('addvideo.php');
     }
 
 }
@@ -36,7 +39,7 @@ if ( is_post_request() ) {
                 <li class="fs-5 mt-2 text-primary"><?php echo $target_course['course_name']; ?></li>
                 <li class="fs-4 mt-4" style="color: gold"><b>Toolbox 🛠️️</b></li>
                 <div class="dropdown-divider" style="border-color: white;"></div>
-                <li class="fs-4 mt-2"><button class="btn-success" style="border-radius: 10px;"><a id="previewStudio" style=" color: white; " href="../../courses/preview.php">Preview</a></button></li>
+                <li class="fs-4 mt-2"><button class="btn-success" style="border-radius: 10px;"><a id="previewStudio" style=" color: white; " href="../../courses/preview.php<?php echo preview_link($target_course['id'], $ercc_db) ?>">Preview</a></button></li>
                 <li class="fs-5 mt-2 text-light"><a href="addunit.php">Add Unit</a></li>
                 <li class="fs-5 mt-2 text-light"><a href="editunit.php">Edit Unit</a></li>
                 <li class="fs-5 mt-2 text-light"><a style="background-color: white; color: black;" href="addvideo.php">Add Video</a></li>
@@ -128,7 +131,7 @@ if ( is_post_request() ) {
 
                                             <tr scope="row">
                                                 <td class="fs-3 text-light text-start" style="background-color: darkslategray"><?php echo 'Unit '. $units['unit_number'] . ': ' . $units['unit_name']; ?>  <i class="bi bi-book fs-2"></i></td>
-                                                <td style="background-color: darkslategray"><input class=" schema_checkbox form-check-input form-check-input-lg" type="checkbox" name="schema[]" value="unit,<?php echo $units['id']; ?>"></td>
+                                                <td style="background-color: darkslategray"><input class=" schema_checkbox form-check-input form-check-input-lg" type="checkbox" name="schema[]" value="unit,<?php echo $units['id'] . ',' . $units['unit_number']; ?>"></td>
                                             </tr>
 
                                             <?php $unit_items = get_items_by_uid($ercc_db, $units['id']); ?>
@@ -139,14 +142,14 @@ if ( is_post_request() ) {
 
                                                     <tr scope="row">
                                                         <td class="fs-4 text-light text-start" style="background-color: slategray"><?php echo $items['item_name']; ?> <i class="bi bi-play-circle fs-4"></i></td>
-                                                        <td style="background-color: slategray"><input class=" schema_checkbox form-check-input form-check-input-lg" type="checkbox" name="schema[]" value="item,<?php echo $items['id']; ?>"></td>
+                                                        <td style="background-color: slategray"><input class=" schema_checkbox form-check-input form-check-input-lg" type="checkbox" name="schema[]" value="item,<?php echo $items['id'] . ',' . $items['item_number'] . ',' . $items['unit_id']; ?>"></td>
                                                     </tr>
 
                                                 <?php } elseif($items['type'] == 'QUIZ') { ?>
 
                                                     <tr scope="row">
                                                         <td class="fs-4 text-light text-start" style="background-color: slategray"><?php echo $items['item_name']; ?> <i class="bi bi-clipboard-check fs-4"></i></td>
-                                                        <td style="background-color: slategray"><input class=" schema_checkbox form-check-input form-check-input-lg" type="checkbox" name="schema[]" value="item,<?php echo $items['id']; ?>"></td>
+                                                        <td style="background-color: slategray"><input class=" schema_checkbox form-check-input form-check-input-lg" type="checkbox" name="schema[]" value="item,<?php echo $items['id'] . ',' . $items['item_number'] . ',' . $items['unit_id']; ?>"></td>
                                                     </tr>
 
                                                 <?php } ?>

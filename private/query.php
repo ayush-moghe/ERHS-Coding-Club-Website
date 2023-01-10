@@ -210,6 +210,25 @@ function course_link($course, $db) {
     return "courses/courseplayer.php?cid=" .  (string) $course['id'] . "&uid=" . (string) $unit['id'] . "&iid=" . (string) $item['id'];
 }
 
+function preview_link($course, $db) {
+
+    $sql1 = "SELECT * FROM units WHERE course_id='";
+    $sql1 .= db_escape($db, $course) . "' AND unit_number=1";
+    $result1 = mysqli_query($db, $sql1);
+    confirm_result_set($result1);
+    $unit = mysqli_fetch_assoc($result1);
+    mysqli_free_result($result1);
+
+    $sql2 = "SELECT * FROM items WHERE unit_id='";
+    $sql2 .= db_escape($db, $unit['id']) . "' AND item_number=1";
+    $result2 = mysqli_query($db, $sql2);
+    confirm_result_set($result2);
+    $item = mysqli_fetch_assoc($result2);
+    mysqli_free_result($result2);
+
+    return "?cid=" .  (string) $course . "&uid=" . (string) $unit['id'] . "&iid=" . (string) $item['id'];
+}
+
 function user_roles($username, $db) {
     $sql = "SELECT * FROM users WHERE username='";
     $sql .= $username . "'";
@@ -391,4 +410,107 @@ function edit_quiz($db, $quiz_id, $quiz_name, $quiz_url, $quiz_desc)
         db_disconnect($db);
         exit;
     }
+}
+
+function delete_unit($db, $uid, $position) {
+
+    $sql1 = "DELETE FROM units ";
+    $sql1 .= "WHERE id='" . db_escape($db, $uid) . "' ";
+    $result1 = mysqli_query($db, $sql1);
+    confirm_result_set($result1);
+
+    $sql2 = "UPDATE units SET unit_number = unit_number - 1 ";
+    $sql2 .= "WHERE course_id='" . db_escape($db, $_SESSION['target_course']) . "' ";
+    $sql2 .= "AND unit_number > '" . db_escape($db, $position) . "' ";
+    $result2 = mysqli_query($db, $sql2);
+    confirm_result_set($result2);
+
+    $sql3 = "DELETE FROM items ";
+    $sql3 .= "WHERE unit_id='" . db_escape($db, $uid) . "' ";
+    $result3 = mysqli_query($db, $sql3);
+    confirm_result_set($result3);
+
+}
+
+function delete_item($db, $iid, $position, $uid) {
+
+    $sql1 = "DELETE FROM items ";
+    $sql1 .= "WHERE id='" . db_escape($db, $iid) . "' ";
+    $result1 = mysqli_query($db, $sql1);
+    confirm_result_set($result1);
+
+    $sql2 = "UPDATE items SET item_number = item_number - 1 ";
+    $sql2 .= "WHERE unit_id='" . db_escape($db, $uid) . "' ";
+    $sql2 .= "AND item_number > '" . db_escape($db, $position) . "' ";
+    $result2 = mysqli_query($db, $sql2);
+    confirm_result_set($result2);
+
+}
+
+function schema_delete($db, $schema) {
+
+    foreach ($schema as $delete_command) {
+
+        $delete_command = explode(',', $delete_command);
+
+        if($delete_command[0] == 'unit') {
+            delete_unit($db, $delete_command[1], $delete_command[2]);
+
+        } else if($delete_command[0] == 'item') {
+            delete_item($db, $delete_command[1], $delete_command[2], $delete_command[3]);
+
+        }
+
+
+    }
+
+}
+
+function approve_course($db, $cid) {
+
+    $sql = "UPDATE courses SET approved='1' ";
+    $sql .= "WHERE id='" . db_escape($db, $cid) . "'";
+    $result = mysqli_query($db, $sql);
+    if($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+
+}
+
+function disapprove_course($db, $cid)
+{
+
+    $sql = "UPDATE courses SET approved='0' ";
+    $sql .= "WHERE id='" . db_escape($db, $cid) . "'";
+    $result = mysqli_query($db, $sql);
+    if ($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
+function delete_course($db, $cid) {
+
+    $sql1 = "DELETE FROM courses ";
+    $sql1 .= "WHERE id='" . db_escape($db, $cid) . "' ";
+    $result1 = mysqli_query($db, $sql1);
+    confirm_result_set($result1);
+
+    $sql2 = "DELETE FROM units ";
+    $sql2 .= "WHERE course_id='" . db_escape($db, $cid) . "' ";
+    $result2 = mysqli_query($db, $sql2);
+    confirm_result_set($result2);
+
+    $sql3 = "DELETE FROM items ";
+    $sql3 .= "WHERE course_number='" . db_escape($db, $cid) . "' ";
+    $result3 = mysqli_query($db, $sql3);
+    confirm_result_set($result3);
+
 }

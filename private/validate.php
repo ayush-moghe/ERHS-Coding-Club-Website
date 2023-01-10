@@ -146,3 +146,15 @@ function course_exists($db, $course_name) {
 
     return $course_count === 0 ? false : true;
 }
+
+function check_course_approved($db, $cid) {
+    $sql = "SELECT * FROM courses WHERE id='" . db_escape($db, $cid) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $course = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+
+    return $course['approved'] == '1';
+
+
+}

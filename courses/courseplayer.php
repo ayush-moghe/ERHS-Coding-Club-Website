@@ -3,12 +3,12 @@ $page_name = 'courseplayer';
 $page_style = 'webpage';
 require_once "../private/init.php";
 require_login('../login/login.php');
+$ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 
-if( !isset($_GET['cid']) or !isset($_GET['uid']) or !isset($_GET['iid']) ) {
+if( !isset($_GET['cid']) or !isset($_GET['uid']) or !isset($_GET['iid']) or !check_course_approved($ercc_db, $_POST['cid'] ) ) {
     redirect_to('../dashboard.php');
 }
 
-$ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 $course = get_course_by_id($_GET['cid'], $ercc_db);
 $course_units = get_units_by_cid($ercc_db, $_GET['cid']);
 ?>

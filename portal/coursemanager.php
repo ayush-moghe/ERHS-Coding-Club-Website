@@ -17,7 +17,18 @@
          redirect_to('coursestudio/addunit.php');
 
      } elseif ( isset($_POST['preview']) ) {
-         redirect_to('../index.php');
+         redirect_to('../courses/preview.php' . preview_link(  $_POST['preview'], $ercc_db ) );
+
+     } elseif ( isset($_POST['approve']) ) {
+         approve_course($ercc_db, $_POST['approve']);
+
+     } elseif ( isset($_POST['disapprove']) ) {
+         disapprove_course($ercc_db, $_POST['disapprove']);
+
+     } elseif ( isset($_POST['delete']) ) {
+         delete_course($ercc_db, $_POST['delete']);
+         redirect_to('coursemanager.php');
+
      }
 
 
@@ -55,7 +66,7 @@
                                      <h4 class="card-title" style="color: orange"><b><?php echo $course['course_name']; ?></b></h4>
                                      <h5 style="color: yellow"><i>Author: <?php echo $course['author']; ?></i></h5>
                                      <h5>Approved:
-                                         <?php if ($course['approved'] == 1) { ?>
+                                         <?php if (check_course_approved($ercc_db, $course['id'])) { ?>
                                              <i class="bi bi-check-circle-fill text-success"></i>
                                          <?php } else { ?>
                                              <i class="bi bi-x-circle-fill text-danger"></i>
@@ -66,8 +77,18 @@
                                      <p class="card-text" style="color: white;"><b style="color: lawngreen">Description: </b> <?php echo $course['description']; ?></p>
                                  </div>
                                  <div class="card-footer">
-                                     <button class="btn btn-primary" type="submit" name="course" value="<?php echo $course['id']; ?>">Build/Edit</button>
-                                     <button class="btn btn-success" type="submit" name="preview" value="<?php echo $course['id']; ?>">Preview</button>
+                                     <button class="btn btn-primary mt-1" type="submit" name="course" value="<?php echo $course['id']; ?>">Build/Edit</button>
+                                     <button class="btn btn-success mt-1" type="submit" name="preview" value="<?php echo $course['id']; ?>">Preview</button>
+                                     <?php if (check_if_role($ercc_db, 'admin,teacher') ) { ?>
+                                         <?php if (!check_course_approved($ercc_db, $course['id']) ) { ?>
+                                            <button class="btn btn-light mt-1" type="submit" name="approve" value="<?php echo $course['id']; ?>">Approve</button>
+                                         <?php } else { ?>
+                                            <button class="btn btn-warning mt-1" type="submit" name="disapprove" value="<?php echo $course['id']; ?>">Disapprove</button>
+                                         <?php } ?>
+                                     <?php } ?>
+                                     <?php if (check_if_role($ercc_db, 'admin') ) { ?>
+                                        <button class="btn btn-danger mt-1" type=submit" name="delete" value="<?php echo $course['id']; ?>">Delete</button>
+                                     <?php } ?>
                                  </div>
                              </div>
                          </div>
