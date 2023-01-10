@@ -5,7 +5,7 @@ require_once "../private/init.php";
 require_login('../login/login.php');
 $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 
-if( !isset($_GET['cid']) or !isset($_GET['uid']) or !isset($_GET['iid']) or !check_course_approved($ercc_db, $_POST['cid'] ) ) {
+if( !isset($_GET['cid']) or !isset($_GET['uid']) or !isset($_GET['iid']) ) {
     redirect_to('../dashboard.php');
 }
 
