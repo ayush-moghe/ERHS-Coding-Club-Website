@@ -2,7 +2,7 @@
 $page_style = "webpage";
 $page_name = "Login";
 require_once "../private/init.php";
-
+//test
 $error = false;
 $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 
