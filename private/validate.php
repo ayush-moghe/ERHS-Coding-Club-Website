@@ -154,7 +154,7 @@ function check_course_approved($db, $cid) {
     $course = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
 
-    return $course['approved'] == '1';
+    return $course['approved'] === '1' ? true : false;
 
 
 }
