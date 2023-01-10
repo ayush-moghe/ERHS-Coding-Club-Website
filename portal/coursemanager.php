@@ -29,7 +29,45 @@ $courses = all_courses($ercc_db);
         </div>
         <div class="page-content-wrapper">
             <div class="container-fluid"><a id="menu-toggle" class="btn btn-link" role="button" href="#menu-toggle"><i class="bi bi-gear-fill fs-1"></i></a>
-
+                <form method="post" action="coursemanager.php">
+                    <div class="row w-75 mt-5" style="margin: auto;">
+                        <?php while($course = mysqli_fetch_assoc($courses)) { ?>
+                            <div class="col mt-4">
+                                <div class="card h-100" style="background-color: dimgrey; border: 4px solid darkgreen;">
+                                    <img class="card-img-top" src="../private/assets/img/ERHSCC.png" alt="python logo">
+                                    <div class="card-header" style="border-bottom: 2px solid white;">
+                                        <h4 class="card-title" style="color: orange"><b><?php echo $course['course_name']; ?></b></h4>
+                                        <h5 style="color: yellow"><i>Author: <?php echo $course['author']; ?></i></h5>
+                                        <h5>Approved:
+                                            <?php if (check_course_approved($ercc_db, $course['id'])) { ?>
+                                                <i class="bi bi-check-circle-fill text-success"></i>
+                                            <?php } else { ?>
+                                                <i class="bi bi-x-circle-fill text-danger"></i>
+                                            <?php } ?>
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text" style="color: white;"><b style="color: lawngreen">Description: </b> <?php echo $course['description']; ?></p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary mt-1" type="submit" name="course" value="<?php echo $course['id']; ?>">Build/Edit</button>
+                                        <button class="btn btn-success mt-1" type="submit" name="preview" value="<?php echo $course['id']; ?>">Preview</button>
+                                        <?php if (check_if_role($ercc_db, 'admin,teacher') ) { ?>
+                                            <?php if (!check_course_approved($ercc_db, $course['id']) ) { ?>
+                                                <button class="btn btn-light mt-1" type="submit" name="approve" value="<?php echo $course['id']; ?>">Approve</button>
+                                            <?php } else { ?>
+                                                <button class="btn btn-warning mt-1" type="submit" name="disapprove" value="<?php echo $course['id']; ?>">Disapprove</button>
+                                            <?php } ?>
+                                        <?php } ?>
+                                        <?php if (check_if_role($ercc_db, 'admin') ) { ?>
+                                            <button class="btn btn-danger mt-1" type=submit" name="delete" value="<?php echo $course['id']; ?>">Delete</button>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
