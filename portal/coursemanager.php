@@ -5,7 +5,9 @@ require_once "../private/init.php";
 $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 require_login('../login/login.php');
 require_role(STAFFROLES, $ercc_db);
-$roles = explode( ',' , user_roles($_SESSION['username'], $ercc_db) );
+
+$courses = all_courses($ercc_db);
+
 ?>
 
 <?php require_once "../private/temp/headerNest.php"; ?>
@@ -27,19 +29,7 @@ $roles = explode( ',' , user_roles($_SESSION['username'], $ercc_db) );
         </div>
         <div class="page-content-wrapper">
             <div class="container-fluid"><a id="menu-toggle" class="btn btn-link" role="button" href="#menu-toggle"><i class="bi bi-gear-fill fs-1"></i></a>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="h1 text-center text-light mt-2" style="font-family: 'Montserrat', sans-serif;">Welcome, <?php echo $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] ?></div>
-                        <div class="container container-flex text-center mt-5" style="border-radius: 10px; border: 4px solid black;">
-                            <div class="h2 text-info mt-2" style="font-family: 'Orbitron', sans-serif;">My Roles:</div>
-                            <?php
-                            foreach($roles as $role) {
-                                display_role($role);
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
