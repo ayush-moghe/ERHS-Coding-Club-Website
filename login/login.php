@@ -71,6 +71,11 @@ if (is_post_request()) {
                 <strong>Error!</strong> Your login was invalid.
             </div>
         <?php } ?>
+
+        <div>
+            <a class="fs-5 text-warning mb-3 mt-3" href="../loginhelp.php" >Forgot your password/username? Click here</a>
+        </div>
+
         <button type="submit" class="btn btn-lg btn-primary mt-3 mb-3">Login</button>
     </form>
 
