@@ -4,7 +4,9 @@ $page_name = 'Edit Video';
 require_once "../../private/init.php";
 $ercc_db = db_connect('../../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 require_login('../../login/login.php');
-require_role( STAFFROLES, $ercc_db);
+require_role( STAFFROLES, $ercc_db, '../../index.php');
+require_user_verified($ercc_db, $_SESSION['username'], '../../index.php');
+
 
 $target_course = get_course_by_id($_SESSION['target_course'], $ercc_db);
 $course_units = get_units_by_cid($ercc_db, $target_course['id']);

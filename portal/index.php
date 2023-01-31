@@ -4,8 +4,9 @@ $page_style = 'portal';
 require_once "../private/init.php";
 $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 require_login('../login/login.php');
-require_role(STAFFROLES, $ercc_db);
+require_role(STAFFROLES, $ercc_db, '../index.php');
 $roles = explode( ',' , user_roles($_SESSION['username'], $ercc_db) );
+require_user_verified($ercc_db, $_SESSION['username'], '../index.php');
 ?>
 
 <?php require_once "../private/temp/headerNest.php"; ?>

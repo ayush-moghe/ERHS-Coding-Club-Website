@@ -158,3 +158,15 @@ function check_course_approved($db, $cid) {
 
 
 }
+
+function require_user_verified($db, $username, $redirect_url) {
+    $sql = "SELECT * FROM users WHERE username='" . db_escape($db, $username) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $user = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+
+    if($user['verified'] == '0') {
+        redirect_to($redirect_url);
+    }
+}

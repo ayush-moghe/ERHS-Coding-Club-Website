@@ -4,7 +4,8 @@ $page_style = 'portal';
 require_once "../private/init.php";
 $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
 require_login('../login/login.php');
-require_role( STAFFROLES, $ercc_db);
+require_role( STAFFROLES, $ercc_db, '../index.php' );
+require_user_verified($ercc_db, $_SESSION['username'], '../index.php');
 $user_set = all_users($ercc_db);
 
 if (is_post_request()) {

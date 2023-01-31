@@ -34,10 +34,10 @@ function require_login($redirect_url) {
     }
 }
 
-function require_role($roles, $db) {
+function require_role($roles, $db, $redirect_url) {
 
     if( !check_if_role($db, $roles) or !is_verified() ) {
-        redirect_to('../index.php');
+        redirect_to($redirect_url);
     }
 
 }
