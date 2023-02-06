@@ -513,4 +513,18 @@ function delete_course($db, $cid) {
     $result3 = mysqli_query($db, $sql3);
     confirm_result_set($result3);
 
+    $user_set = all_users($db);
+    while ($user = mysqli_fetch_assoc($user_set) ) {
+
+        $user_courses = explode(',', $user['enrollment']);
+        $user_courses = array_diff($user_courses, explode(',', $cid));
+        $user_courses = implode(',', $user_courses);
+        $sql4 = "UPDATE users SET enrollment='" . db_escape($db, $user_courses) . "' ";
+        $sql4 .= "WHERE id='" . db_escape($db, $user['id']) . "' ";
+        $result4 = mysqli_query($db, $sql4);
+        confirm_result_set($result4);
+
+    }
+
+
 }
