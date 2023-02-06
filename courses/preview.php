@@ -4,7 +4,7 @@ $page_style = 'webpage';
 require_once "../private/init.php";
 require_login('../login/login.php');
 $ercc_db = db_connect('../private/cert/BaltimoreCyberTrustRoot.crt.pem');
-require_role( STAFFROLES, $ercc_db);
+require_role( STAFFROLES, $ercc_db, '../dashboard.php' );
 
 if( !isset($_GET['cid']) or !isset($_GET['uid']) or !isset($_GET['iid']) ) {
     redirect_to('../dashboard.php');
