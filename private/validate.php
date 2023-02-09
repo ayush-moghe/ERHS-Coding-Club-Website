@@ -36,8 +36,8 @@ function r_validate_user($user_data, $db) {
         $errors['present'] = true;
     }
 
-    if(!preg_match('/^[A-Z]{1}[a-z]{2}/', $user_data['last_name'])) {
-        $errors['last_name'] = "Last name must start with a capital letter, must have no numbers or special characters, and must be at least 3 characters long.";
+    if(!preg_match('/^[A-Z]{1}[a-z]{1}/', $user_data['last_name'])) {
+        $errors['last_name'] = "Last name must start with a capital letter, must have no numbers or special characters, and must be at least 2 characters long.";
         $errors['present'] = true;
     }
 
