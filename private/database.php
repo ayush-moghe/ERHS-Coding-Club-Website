@@ -3,7 +3,7 @@
 function db_connect($cert_path) {
     $conn = mysqli_init();
     mysqli_ssl_set($conn,NULL,NULL, $cert_path, NULL, NULL);
-    mysqli_real_connect($conn, 'ercc-db.mysql.database.azure.com', 'ayush@ercc-db', 'Cnusd314361', 'ercc_db', 3306, MYSQLI_CLIENT_SSL);
+    mysqli_real_connect($conn, 'ercc-db.mysql.database.azure.com', 'ayush@ercc-db', 'Cnusd314361', 'ercc_db', 3306, MYSQLI_CLIENT_SSL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT );
     if ($conn) {
         return $conn;
     } else {
