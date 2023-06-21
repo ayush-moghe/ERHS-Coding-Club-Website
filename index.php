@@ -12,6 +12,7 @@ $ercc_db = db_connect('./private/cert/BaltimoreCyberTrustRoot.crt.pem');
 <?php require_once './private/temp/header.php'; ?>
 <?php require_once './private/temp/navbar.php'; ?>
 
+
 <div class="container-fluid text-center">
     <img class="img-fluid" src="./private/assets/img/ERHSCC.png" alt="ERHS Coding Club Logo">
     <div class="h1 erhs-h1 mt-5" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">&lt Welcome to the ERHS Coding Club &gt</div>

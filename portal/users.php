@@ -7,6 +7,20 @@ require_login('../login/login.php');
 require_role(STAFFROLES, $ercc_db, '../index.php');
 $user_set = all_users($ercc_db);
 require_user_verified($ercc_db, $_SESSION['username'], '../index.php');
+$col_count = check_if_role($ercc_db, 'admin,teacher') ? '10' : '8';
+
+if(is_post_request()) {
+    $action = $_POST['action'];
+    $uid = $_POST['uid'];
+
+    if($action == 'verify' or $action == 'unverify') {
+        update_verification($ercc_db, $uid);
+    } elseif($action == 'delete') {
+        delete_user($ercc_db, $uid);
+    }
+    $user_set = all_users($ercc_db);
+
+}
 ?>
 
 <?php require_once "../private/temp/headerNest.php"; ?>
@@ -23,13 +37,20 @@ require_user_verified($ercc_db, $_SESSION['username'], '../index.php');
             <li class="fs-5 mt-2 text-light"><a href="index.php">Home</a></li>
             <li class="fs-5 mt-2 text-light"><a href="coursemaker.php">Course Maker</a></li>
             <li class="fs-5 mt-2 text-light"><a href="coursemanager.php">Course Manager</a></li>
-            <li class="fs-5 mt-2 text-light"><a style="background-color: white; color: black;" href="users.php">User Table</a></li>
-            <li class="fs-5 mt-2 text-light"><a href="verify.php">Verification Hub</a></li>
+            <li class="fs-5 mt-2 text-light"><a style="background-color: white; color: black;" href="users.php">User Hub</a></li>
         </ul>
     </div>
     <div class="page-content-wrapper">
-        <div class="container-fluid"><a id="menu-toggle" class="btn btn-link" role="button" href="#menu-toggle"><i class="bi bi-gear-fill fs-1"></i></a>
 
+        <div class="container-fluid"><a id="menu-toggle" class="btn btn-link" role="button" href="#menu-toggle"><i class="bi bi-gear-fill fs-1"></i></a>
+<!--            --><?php //if(!check_if_role($ercc_db, 'admin,teacher')) { ?>
+<!--                <div class="fs-5 text-center mt-5 w-75" style="margin: auto; background-color: rgb(46, 43, 42); color: white; border-radius: 15px; border: 2px solid white;">-->
+<!--                    <div class="erhs-h1 h1 mt-2"><b>Services Blocked:</b></div>-->
+<!--                    <div class="erhs-h2 h3"><u>Verify Users</u></div>-->
+<!--                    <div class="erhs-h2 h3"><u>Delete Users</u></div>-->
+<!--                    <div class="erhs-p h3 mb-2">Role Required: Admin or Teacher</div>-->
+<!--                </div>-->
+<!--            --><?php //} ?>
             <div class="h1 text-light text-center mt-5" style="font-family: 'Montserrat', sans-serif;">User Table</div>
 
             <div class="table-responsive-md mt-5 mb-5 ">
@@ -37,9 +58,11 @@ require_user_verified($ercc_db, $_SESSION['username'], '../index.php');
                 <table class="table table-hover table-success table-bordered w-75 text-center" style="margin: auto;">
 
                     <thead>
+
                     <tr>
-                        <th colspan="8" class="h2 mt-5 align-self-center fs-2 pt-2 pb-2 bg-primary mb-0" style="margin: auto; font-family: 'Work Sans', sans-serif; color: lightgrey;">Users</th>
+                        <th colspan="<?php echo $col_count; ?>" class="h2 mt-5 align-self-center fs-2 pt-2 pb-2 bg-primary mb-0" style="margin: auto; font-family: 'Work Sans', sans-serif; color: lightgrey;">Users</th>
                     </tr>
+
                     <tr class="table-light">
                         <th scope="col">Database ID</th>
                         <th scope="col">Student ID</th>
@@ -49,11 +72,16 @@ require_user_verified($ercc_db, $_SESSION['username'], '../index.php');
                         <th scope="col">Verified</th>
                         <th scope="col">Roles</th>
                         <th scope="col">Course Enrollment</th>
+                        <?php
+                            if(check_if_role($ercc_db, 'admin,teacher')) {
+                                echo '<th scope="col">Edit</th>';
+                                echo '<th scope="col">Delete</th>';
+                            }
+                         ?>
                     </tr>
                     </thead>
 
                     <tbody>
-
                     <?php while($users = mysqli_fetch_assoc( $user_set )) { ?>
                         <?php if($users['username'] == $_SESSION['username']) { ?>
                             <tr scope="row" class="table-danger">
@@ -71,6 +99,10 @@ require_user_verified($ercc_db, $_SESSION['username'], '../index.php');
                                 </td>
                                 <td><?php echo $users['role']; ?></td>
                                 <td><?php echo $users['enrollment']; ?></td>
+                                <?php if(check_if_role($ercc_db, 'admin,teacher')) { ?>
+                                    <td>N/A</td>
+                                    <td>N/A</td>
+                                <?php } ?>
                             </tr>
                         <?php } else { ?>
                             <tr scope="row">
@@ -88,6 +120,31 @@ require_user_verified($ercc_db, $_SESSION['username'], '../index.php');
                                 </td>
                                 <td><?php echo $users['role']; ?></td>
                                 <td><?php echo $users['enrollment']; ?></td>
+                                <?php if(check_if_role($ercc_db, 'admin,teacher')) { ?>
+                                    <td>
+                                        <?php if($users['verified'] == 0) { ?>
+                                            <form action="users.php" method="post">
+                                                <input type="hidden" name="action" value="verify">
+                                                <input type="hidden" name="uid" value="<?php echo $users['id']; ?>">
+                                                <button type="submit" class="btn btn-success">Verify</button>
+                                            </form>
+                                        <?php } elseif($users['verified'] == 1) {?>
+                                            <form action="users.php" method="post">
+                                                <input type="hidden" name="action" value="unverify">
+                                                <input type="hidden" name="uid" value="<?php echo $users['id']; ?>">
+                                                <button type="submit" class="btn btn-danger">Unverify</button>
+                                            </form>
+                                        <?php } ?>
+                                    </td>
+
+                                    <td>
+                                        <form action="users.php" method="post">
+                                            <input type="hidden" name="action" value="delete">
+                                            <input type="hidden" name="uid" value="<?php echo $users['id']; ?>">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                <?php } ?>
                             </tr>
                         <?php } ?>
                     <?php } ?>
@@ -103,8 +160,7 @@ require_user_verified($ercc_db, $_SESSION['username'], '../index.php');
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="../private/assets/js/Sidebar-Menu.js"></script>
+
 
 
 <?php require_once "../private/temp/footer.php"; ?>

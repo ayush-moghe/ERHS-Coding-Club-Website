@@ -41,8 +41,7 @@ if (is_post_request()) {
             <li class="fs-5 mt-2 text-light"><a href="index.php">Home</a></li>
             <li class="fs-5 mt-2 text-light"><a style="background-color: white; color: black;" href="coursemaker.php">Course Maker</a></li>
             <li class="fs-5 mt-2 text-light"><a href="coursemanager.php">Course Manager</a></li>
-            <li class="fs-5 mt-2 text-light"><a href="users.php">User Table</a></li>
-            <li class="fs-5 mt-2 text-light"><a href="verify.php">Verification Hub</a></li>
+            <li class="fs-5 mt-2 text-light"><a href="users.php">User Hub</a></li>
         </ul>
     </div>
 
@@ -94,8 +93,7 @@ if (is_post_request()) {
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="../private/assets/js/Sidebar-Menu.js"></script>
+
 
 
 <?php require_once "../private/temp/footer.php"; ?>

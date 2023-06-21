@@ -528,3 +528,19 @@ function delete_course($db, $cid) {
 
 
 }
+
+function delete_user($db, $uid) {
+
+    $sql = "DELETE FROM users WHERE id='" . db_escape($db, $uid) . "' ";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    if ($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+
+
+}

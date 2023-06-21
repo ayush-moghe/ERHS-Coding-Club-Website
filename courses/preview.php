@@ -69,8 +69,7 @@ $course_units = get_units_by_cid($ercc_db, $_GET['cid']);
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="../private/assets/js/Sidebar-Menu.js"></script>
+
 
 
 
