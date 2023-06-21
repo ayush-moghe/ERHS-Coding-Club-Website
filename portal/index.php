@@ -23,6 +23,9 @@ require_user_verified($ercc_db, $_SESSION['username'], '../index.php');
             <li class="fs-5 mt-2 text-light"><a href="coursemaker.php">Course Maker</a></li>
             <li class="fs-5 mt-2 text-light"><a href="coursemanager.php">Course Manager</a></li>
             <li class="fs-5 mt-2 text-light"><a href="users.php">User Hub</a></li>
+            <?php if(check_if_role($ercc_db, 'admin,teacher')) {
+                echo '<li class="fs-5 mt-2 text-light"><a href="addrole.php">Add Role</a></li>';
+            } ?>
         </ul>
     </div>
     <div class="page-content-wrapper">
