@@ -11,7 +11,8 @@ $user_set = all_users($ercc_db);
 if(is_post_request()) {
     $user = $_POST['user_select'] ?? '';
     $role = $_POST['role_select'] ?? '';
-    add_role($ercc_db, $user, $role);
+    delete_role($ercc_db, $user, $role);
+
 }
 
 
@@ -32,8 +33,8 @@ if(is_post_request()) {
             <li class="fs-5 mt-2 text-light"><a href="coursemanager.php">Course Manager</a></li>
             <li class="fs-5 mt-2 text-light"><a href="users.php">User Hub</a></li>
             <?php if(check_if_role($ercc_db, 'admin,teacher')) {
-                echo '<li class="fs-5 mt-2 text-light"><a style="background-color: white; color: black;" href="addrole.php">Add Role</a></li>';
-                echo '<li class="fs-5 mt-2 text-light"><a href="deleterole.php">Delete Role</a></li>';
+                echo '<li class="fs-5 mt-2 text-light"><a href="addrole.php">Add Role</a></li>';
+                echo '<li class="fs-5 mt-2 text-light"><a style="background-color: white; color: black;" href="deleterole.php">Delete Role</a></li>';
             } ?>
         </ul>
     </div>
@@ -46,9 +47,9 @@ if(is_post_request()) {
 
                     <div class="container-fluid">
 
-                        <form method="post" action="addrole.php" class="w-75 ps-5 pe-5 pb-5" style="margin: auto; border-radius: 15px; background-color: darkgreen">
+                        <form method="post" action="deleterole.php" class="w-75 ps-5 pe-5 pb-5" style="margin: auto; border-radius: 15px; background-color: darkgreen">
 
-                            <div class="h1 fs-sm-5 erhs-h1 text-center mb-4 mt-5" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">Add User Role:</div>
+                            <div class="h1 fs-sm-5 erhs-h1 text-center mb-4 mt-5" style="font-family: 'Orbitron', sans-serif; text-shadow: 2px 2px 2px white;">Delete User Role:</div>
 
                             <hr style="opacity: 1; color: white; height: 5px;">
 
@@ -60,9 +61,9 @@ if(is_post_request()) {
                                     <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-person-circle"></i></span>
                                     <select id="user_select" name="user_select" class="form-select">
                                         <?php
-                                            while($users = mysqli_fetch_assoc($user_set)) {
-                                                echo '<option value="' . $users['username'] . '">' . $users['username'] . '</option>';
-                                            }
+                                        while($users = mysqli_fetch_assoc($user_set)) {
+                                            echo '<option value="' . $users['username'] . '">' . $users['username'] . '</option>';
+                                        }
                                         ?>
                                     </select>
 
@@ -72,7 +73,7 @@ if(is_post_request()) {
 
                             <div>
 
-                                <label class="form-label mt-2 text-light" for="role_select">Add Role</label>
+                                <label class="form-label mt-2 text-light" for="role_select">Delete Role</label>
                                 <div class="input-group input-group-lg">
 
                                     <span class="input-group-text" id="inputGroup-sizing-lg"><i class="bi bi-gem"></i></span>
@@ -92,7 +93,7 @@ if(is_post_request()) {
 
                             </div>
 
-                            <button type="submit" class="btn btn-lg btn-primary mt-3">Add Role</button>
+                            <button type="submit" class="btn btn-lg btn-primary mt-3">Delete Role</button>
 
                         </form>
 

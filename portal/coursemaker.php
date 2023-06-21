@@ -44,6 +44,7 @@ if (is_post_request()) {
             <li class="fs-5 mt-2 text-light"><a href="users.php">User Hub</a></li>
             <?php if(check_if_role($ercc_db, 'admin,teacher')) {
                 echo '<li class="fs-5 mt-2 text-light"><a href="addrole.php">Add Role</a></li>';
+                echo '<li class="fs-5 mt-2 text-light"><a href="deleterole.php">Delete Role</a></li>';
             } ?>
         </ul>
     </div>

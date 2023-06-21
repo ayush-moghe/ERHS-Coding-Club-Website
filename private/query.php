@@ -254,6 +254,24 @@ function add_role($db, $username, $role) {
 
 }
 
+function delete_role($db, $username, $role) {
+
+    $roles = user_roles($username, $db);
+
+    if(str_contains($roles,$role) == true) {
+        $roles = explode(',', $roles);
+        $key = array_search($role, $roles);
+        unset($roles[$key]);
+        $roles = implode(',', $roles);
+    }
+
+    $sql = "UPDATE users SET role='" . db_escape($db, $roles) . "' ";
+    $sql .= "WHERE username='" . db_escape($db, $username) . "' ";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+
+}
+
 function all_users($db) {
     $sql = "SELECT * FROM users";
     $result = mysqli_query($db, $sql);
