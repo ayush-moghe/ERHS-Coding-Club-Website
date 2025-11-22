@@ -1,2 +1,1 @@
-<img width="640" height="360" alt="image" src="https://github.com/user-attachments/assets/73ff3110-1c39-4a33-b79b-97f0daf1f221" />
-
+<iframe width="1022" height="575" src="https://www.youtube.com/embed/m95zSj5MDys" title="Officer training #1: Using staff portal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
